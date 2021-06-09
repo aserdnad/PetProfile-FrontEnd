@@ -9,6 +9,6 @@ export const Home = () => (
 		</p>
 		<h1>Con Pet Profile,</h1>
 		<h1>no te pierdas ni un solo momento de tu mastoca,</h1>
-		<h1>¡al alcance de un solo clic!</h1>
+		<h1>¡Al alcance de un solo clic!</h1>
 	</div>
 );
