@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// import { FormPerson } from "./formperson.js";
 
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light mb-3">
+		<nav className="navbar expand-lg navbar-dark bg-dark m-4">
 			<Link to="/">
-				<span className="navbar-brand mb-0 h1">React Boilerplate</span>
+				<p className="navbar-brand m-4 h1">Pet Profile</p>
 			</Link>
 			<div className="ml-auto">
-				<Link to="/demo">
-					<button className="btn btn-primary">Check the Context in action</button>
+				<Link to="/FormPerson">
+					<button className="btn btn-light p-4">¡Continuemos!</button>
 				</Link>
 			</div>
 		</nav>
