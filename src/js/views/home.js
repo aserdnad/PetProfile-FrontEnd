@@ -1,6 +1,7 @@
 import React from "react";
 import pets1 from "../../img/pets1.jpg";
 import "../../styles/home.scss";
+import { NavbarHome } from "../component/navbarhome.js";
 
 export const Home = () => (
 	<div className="text-center m-5 p-5">
