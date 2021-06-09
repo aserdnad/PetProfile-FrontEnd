@@ -2,15 +2,6 @@ import React, { useEffect } from "react";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
 
 export const Navbar = () => {
-	const match = useRouteMatch();
-	const history = useHistory();
-	useEffect(
-		() => {
-			console.log(match);
-			console.log(history.location.pathname);
-		},
-		[match]
-	);
 	return (
 		<nav className="navbar expand-lg navbar-dark bg-dark m-4">
 			<Link to="/">
