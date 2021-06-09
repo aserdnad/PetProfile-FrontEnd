@@ -7,6 +7,8 @@ export const Home = () => (
 		<p>
 			<img src={pets1} />
 		</p>
-		<h1>Con Pet Profile, no te pierdas ni un solo momento de tu mastoca, ¡al alcance de un solo clic!</h1>
+		<h1>Con Pet Profile,</h1>
+		<h1>no te pierdas ni un solo momento de tu mastoca,</h1>
+		<h1>¡al alcance de un solo clic!</h1>
 	</div>
 );
