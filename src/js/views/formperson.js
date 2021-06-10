@@ -18,7 +18,7 @@ export function FormPerson() {
 				<input type="text" className="form-control" id="formGroupExampleInput" placeholder="" />
 			</div>
 			<div className="form-group">
-				<label HtmlFor="formGroupExampleInput">Numero de contacto</label>
+				<label HtmlFor="formGroupExampleInput">Número de contacto</label>
 				<input type="text" className="form-control" id="formGroupExampleInput" placeholder="" />
 			</div>
 			<div className="form-group">
@@ -26,7 +26,7 @@ export function FormPerson() {
 				<input type="text" className="form-control" id="formGroupExampleInput" placeholder="" />
 			</div>
 			<div className="form-group">
-				<label HtmlFor="formGroupExampleInput">Pais</label>
+				<label HtmlFor="formGroupExampleInput">País</label>
 				<input type="text" className="form-control" id="formGroupExampleInput" placeholder="" />
 			</div>
 			<div className="form-group">
@@ -34,7 +34,7 @@ export function FormPerson() {
 				<input type="text" className="form-control" id="formGroupExampleInput" placeholder="" />
 			</div>
 			<div className="form-group">
-				<label HtmlFor="formGroupExampleInput">Direccion</label>
+				<label HtmlFor="formGroupExampleInput">Dirección</label>
 				<input type="text" className="form-control" id="formGroupExampleInput" placeholder="" />
 			</div>
 			<h1>Datos de la cuenta</h1>
