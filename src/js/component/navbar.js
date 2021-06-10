@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
+import {logo} from "src/img/logo.PNG";
+
 
 export const Navbar = () => {
 	const match = useRouteMatch();
