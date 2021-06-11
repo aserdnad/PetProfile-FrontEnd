@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useRouteMatch, useHistory } from "react-router-dom";
-import {logo} from "src/img/logo.PNG";
-
+import logo from "../../img/logo.png";
 
 export const Navbar = () => {
 	const match = useRouteMatch();
