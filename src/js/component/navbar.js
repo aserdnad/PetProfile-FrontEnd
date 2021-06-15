@@ -17,15 +17,15 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar expand-lg navbar-dark bg-dark m-4">
 			<Link to="/">
-				<img className="w-25" src={logo} />
+				<img width="50" height="50" src={logo} />
 			</Link>
 			<div className="ml-auto">
 				{history.location.pathname == "/" && (
 					<Link>
-						<button className="btn btn-light m-1 p-3" type="button" onClick={handleClick1}>
+						<button className="btn btn-light m-1 p-1" type="button" onClick={handleClick1}>
 							¡Regístrate!
 						</button>
-						<button className="btn btn-light m-1 p-3" type="button" onClick={handleClick2}>
+						<button className="btn btn-light m-1 p-1" type="button" onClick={handleClick2}>
 							¡Inicia Sesión!
 						</button>
 					</Link>
