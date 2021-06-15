@@ -5,8 +5,8 @@ import logo from "../../img/logo.png";
 export const Navbar = () => {
 	const match = useRouteMatch();
 	const history = useHistory();
-	const handleClick1 = () => history.push("/LogIn");
-	const handleClick2 = () => history.push("/FormPerson");
+	const handleClick1 = () => history.push("/FormPerson");
+	const handleClick2 = () => history.push("/LogIn");
 	useEffect(
 		() => {
 			console.log(match);
