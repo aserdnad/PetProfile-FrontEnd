@@ -5,6 +5,8 @@ import logo from "../../img/logo.png";
 export const Navbar = () => {
 	const match = useRouteMatch();
 	const history = useHistory();
+	const handleClick1 = () => history.push("/LogIn");
+	const handleClick2 = () => history.push("/FormPerson");
 	useEffect(
 		() => {
 			console.log(match);
@@ -15,12 +17,17 @@ export const Navbar = () => {
 	return (
 		<nav className="navbar expand-lg navbar-dark bg-dark m-4">
 			<Link to="/">
-				<p className="navbar-brand m-4 h1">Pet Profile</p>
+				<img className="w-25" src={logo} />
 			</Link>
 			<div className="ml-auto">
 				{history.location.pathname == "/" && (
-					<Link to="/FormPerson">
-						<button className="btn btn-light p-4">¡Continuemos!</button>
+					<Link>
+						<button className="btn btn-light m-1 p-3" type="button" onClick={handleClick1}>
+							¡Regístrate!
+						</button>
+						<button className="btn btn-light m-1 p-3" type="button" onClick={handleClick2}>
+							¡Inicia Sesión!
+						</button>
 					</Link>
 				)}
 			</div>
