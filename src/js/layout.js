@@ -9,7 +9,7 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { FormPerson } from "./views/FormPerson";
+import { FormPerson } from "./views/formperson";
 
 //create your first component
 const Layout = () => {
