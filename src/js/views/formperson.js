@@ -96,7 +96,7 @@ export function FormPerson() {
 			<h1>Datos personales</h1>
 			<hr className="style2" />
 			<div className="form-group">
-				<label htmlFor="formGroupExampleInput">Username</label>
+				<label htmlFor="formGroupExampleInput">Usuario</label>
 				<input
 					type="text"
 					className="form-control"
@@ -126,7 +126,7 @@ export function FormPerson() {
 				/>
 			</div>
 			<div className="form-group">
-				<label htmlFor="formGroupExampleInput">Contacto</label>
+				<label htmlFor="formGroupExampleInput">Teléfono de Contacto</label>
 				<input
 					type="text"
 					className="form-control"
@@ -178,7 +178,7 @@ export function FormPerson() {
 			<h1>Datos de la cuenta</h1>
 			<hr className="style2" />
 			<div className="form-group">
-				<label htmlFor="exampleInputEmail1">Correo electronico</label>
+				<label htmlFor="exampleInputEmail1">Correo Electrónico</label>
 				<input
 					type="email"
 					className="form-control"
@@ -189,14 +189,14 @@ export function FormPerson() {
 				/>
 			</div>
 			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Password</label>
+				<label htmlFor="exampleInputPassword1">Contraseña</label>
 
-				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Contraseña" />
 			</div>
 			<div className="form-group">
-				<label htmlFor="exampleInputPassword1">Repetir contraseña</label>
+				<label htmlFor="exampleInputPassword1">Repetir Contraseña</label>
 
-				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password" />
+				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Contraseña" />
 			</div>
 			<button type="submit" className="btn btn-success" onClick={handlerSubmit}>
 				Registrarse

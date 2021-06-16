@@ -10,6 +10,7 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { FormPerson } from "./views/formperson";
+import { FormPet } from "./views/formpet";
 import { Error } from "./views/error";
 import { Persona } from "./views/persona";
 
@@ -30,6 +31,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/formperson">
 							<FormPerson />
+						</Route>
+						<Route exact path="/formpet">
+							<FormPet />
 						</Route>
 						<Route exact path="/:usuario">
 							<Persona />
