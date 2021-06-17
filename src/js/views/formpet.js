@@ -3,83 +3,83 @@ import { useState } from "react";
 import { Form } from "react-bootstrap";
 
 export function FormPet() {
-	const [Name, setName] = useState("");
-	const [Species, setSpecies] = useState("");
-	const [Race, setRace] = useState("");
-	const [Gender, setGender] = useState("");
-	const [Birthday, setBirthday] = useState("");
-	const [Age, setAge] = useState("");
-	const [Weight, setWeight] = useState("");
-	const [Height, setHeight] = useState("");
+	const [name, setName] = useState("");
+	const [species, setSpecies] = useState("");
+	const [race, setRace] = useState("");
+	const [gender, setGender] = useState("");
+	const [birthday, setBirthday] = useState("");
+	const [age, setAge] = useState("");
+	const [weight, setWeight] = useState("");
+	const [height, setHeight] = useState("");
 
-	function NameHandler(event) {
+	function nameHandler(event) {
 		setName(event.target.value);
 	}
-	function SpeciesHandler(event) {
+	function speciesHandler(event) {
 		setSpecies(event.target.value);
 	}
-	function RaceHandler(event) {
+	function raceHandler(event) {
 		setRace(event.target.value);
 	}
-	function GenderHandler(event) {
+	function genderHandler(event) {
 		setGender(event.target.value);
 	}
-	function BirthdayHandler(event) {
+	function birthdayHandler(event) {
 		setBirthday(event.target.value);
 	}
-	function AgeHandler(event) {
+	function ageHandler(event) {
 		setAge(event.target.value);
 	}
-	function WeightHandler(event) {
+	function weightHandler(event) {
 		setWeight(event.target.value);
 	}
-	function HeightHandler(event) {
+	function heightHandler(event) {
 		setHeight(event.target.value);
 	}
-	function handlerSubmit(event) {}
-	// function handlerSubmit(event) = async () => {
-	//     try {
-	//         let resp = await fetch(
-	//             `https://gitpod.io/#https://github.com/aserdnad/PetProfile-BackEnd`,
-	//             {
-	//                 method: "POST",
-	//                 headers: {
-	//                     "Content-Type": "application/json"
-	//                 },
-	//                 body: JSON.stringify([
-	//                     Name,
-	//                     Species,
-	//                     Race,
-	//                     Gender,
-	//                     Birthday,
-	//                     Age,
-	//                     Weight,
-	//                     Height
-	//                 ])
-	//             }
-	//         );
-	//             let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-	//             if (resp.ok) {
-	//                 console.log(resp.ok); // will be true if the response is successfull
-	//                 console.log(resp.status); // the status code = 200 or code = 400 etc.
-	//                 console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes
-	//                 console.log(data); //this will print on the console the exact object received from the server
-	//             } else {
-	//                 console.log(resp.status); // the status code = 200 or code = 400 etc.
-	//                 console.log(data); //this will print on the console the exact object received from the server
-	//             }
-	//         } catch (error) {
-	//             //error handling
-	//             console.log(error);
-	//         }
-	//     };
+	const handlerSubmit = async e => {
+		try {
+			e.preventDefault();
+			e.stopPropagation();
+			let resp = await fetch(`https://black-rhinoceros-nnzbf0de.ws-us09.gitpod.io/`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				// email prueba aislada de la app: dumberson@gmail.com
+				body: JSON.stringify({
+					email: "dumberson@gmail.com",
+					name,
+					species,
+					race,
+					gender,
+					birthday,
+					age,
+					weight,
+					height
+				})
+			});
+			let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+			if (resp.ok) {
+				console.log(resp.ok); // will be true if the response is successfull
+				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes
+				console.log(data); //this will print on the console the exact object received from the server
+			} else {
+				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				console.log(data); //this will print on the console the exact object received from the server
+			}
+		} catch (error) {
+			//error handling
+			console.log(error);
+		}
+	};
 	return (
-		<Form className="form-format">
+		<form className="form-format">
 			<h1>Datos de la Mascota</h1>
 			<hr className="style2" />
 			<div className="form-group">
 				<label htmlFor="formGroupInput">Nombre</label>
-				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={NameHandler} />
+				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={nameHandler} />
 			</div>
 			<div className="form-group">
 				<label htmlFor="formGroupInput">Especie</label>
@@ -88,12 +88,12 @@ export function FormPet() {
 					className="form-control"
 					id="formGroupInput"
 					placeholder=""
-					onChange={SpeciesHandler}
+					onChange={speciesHandler}
 				/>
 			</div>
 			<div className="form-group">
 				<label htmlFor="formGroupInput">Raza</label>
-				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={RaceHandler} />
+				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={raceHandler} />
 			</div>
 			<div className="form-group">
 				<label htmlFor="formGroupInput">Sexo</label>
@@ -102,7 +102,7 @@ export function FormPet() {
 					className="form-control"
 					id="formGroupInput"
 					placeholder=""
-					onChange={GenderHandler}
+					onChange={genderHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -112,12 +112,12 @@ export function FormPet() {
 					className="form-control"
 					id="formGroupInput"
 					placeholder=""
-					onChange={BirthdayHandler}
+					onChange={birthdayHandler}
 				/>
 			</div>
 			<div className="form-group">
 				<label htmlFor="formGroupInput">Edad (años)</label>
-				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={AgeHandler} />
+				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={ageHandler} />
 			</div>
 			<div className="form-group">
 				<label htmlFor="formGroupInput">Peso (cm)</label>
@@ -126,7 +126,7 @@ export function FormPet() {
 					className="form-control"
 					id="formGroupInput"
 					placeholder=""
-					onChange={WeightHandler}
+					onChange={weightHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -136,12 +136,12 @@ export function FormPet() {
 					className="form-control"
 					id="formGroupInput"
 					placeholder=""
-					onChange={HeightHandler}
+					onChange={heightHandler}
 				/>
 			</div>
 			<button type="submit" className="btn btn-success" onClick={handlerSubmit}>
 				Agregar Mascota
 			</button>
-		</Form>
+		</form>
 	);
 }
