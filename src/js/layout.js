@@ -13,6 +13,7 @@ import { FormPerson } from "./views/formperson";
 import { FormPet } from "./views/formpet";
 import { Error } from "./views/error";
 import { Persona } from "./views/persona";
+import { Calendario } from "./views/calendario";
 
 //create your first component
 const Layout = () => {
@@ -34,6 +35,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/formpet">
 							<FormPet />
+						</Route>
+						<Route exact path="/calendario">
+							<Calendario />
 						</Route>
 						<Route exact path="/:usuario">
 							<Persona />
