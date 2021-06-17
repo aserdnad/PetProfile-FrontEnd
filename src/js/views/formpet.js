@@ -40,19 +40,19 @@ export function FormPet() {
 		try {
 			e.preventDefault();
 			e.stopPropagation();
-			let resp = await fetch(`https://black-rhinoceros-nnzbf0de.ws-us09.gitpod.io/`, {
+			let resp = await fetch(`https://3000-magenta-penguin-zgcydz94.ws-us08.gitpod.io/pet`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
 				},
 				// email prueba aislada de la app: dumberson@gmail.com
 				body: JSON.stringify({
-					email: "dumberson@gmail.com",
+					email: "videzere@gmail.com",
 					name,
 					species,
 					race,
 					gender,
-					birthday,
+					birthday: "28072010",
 					age,
 					weight,
 					height
@@ -62,7 +62,7 @@ export function FormPet() {
 			if (resp.ok) {
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
-				console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes
+				// console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes
 				console.log(data); //this will print on the console the exact object received from the server
 			} else {
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
