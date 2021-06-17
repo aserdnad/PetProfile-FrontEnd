@@ -1,4 +1,3 @@
-import axios from "axios";
 import React from "react";
 import { useState } from "react";
 
@@ -12,6 +11,7 @@ export function FormPerson() {
 	const [Ciudad, setCiudad] = useState("");
 	const [Direccion, setDireccion] = useState("");
 	const [Email, setEmail] = useState("");
+	const [Password, setPassword] = useState("");
 
 	function UserNameHandler(event) {
 		setUserName(event.target.value);
@@ -53,43 +53,48 @@ export function FormPerson() {
 		setEmail(event.target.value);
 	}
 
-	function handlerSubmit(event) {
-		const axios = require("axios");
-
-		axios
-			.post("http://localhost:3000/users", {
-				id: 6,
-				first_name: "Fred",
-				last_name: "Blair",
-				email: "freddyb34@gmail.com"
-			})
-			.then(resp => {
-				console.log(resp.data);
-			})
-			.catch(error => {
-				console.log(error);
-			});
-		/*
-		axios.post("http://localhost:3000/users"),
-			{
-				UserName,
-				Name,
-				Apellido,
-				Contacto,
-				FechaNacimiento,
-				Pais,
-				Ciudad,
-				Direccion,
-				Email
-			}.then(response => {
-				if (response.ok) {
-					console.log(response.data);
-					console.log("Informacion enviada!");
-				} else {
-					console.log("Informacion NO enviada :(");
-				}
-		*	});*/
+	function passwordHandler(event) {
+		setPassword(event.target.value);
 	}
+
+	const handlerSubmit = async event => {
+		try {
+			event.preventDefault();
+			event.stopPropagation();
+
+			let resp = await fetch("https://3000-sapphire-crow-ozz6zm0k.ws-us08.gitpod.io/sign-up", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify({
+					/* Homologacion de los nombres de los estados en frontend con los nombres de las variables en backend */
+					user_name: UserName,
+					name: Name,
+					last_name: Apellido,
+					phone: Contacto,
+					birthday: FechaNacimiento,
+					country: Pais,
+					city: Ciudad,
+					email: Email,
+					password: Password
+				})
+			});
+			let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+			if (resp.ok) {
+				console.log(resp.ok); // will be true if the response is successfull
+				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				/*console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes */
+				console.log(data); //this will print on the console the exact object received from the server
+			} else {
+				console.log(resp.status); // the status code = 200 or code = 400 etc.
+				console.log(data); //this will print on the console the exact object received from the server
+			}
+		} catch (error) {
+			//error handling
+			console.log(error);
+		}
+	};
 
 	return (
 		<form className="form-format">
@@ -191,7 +196,13 @@ export function FormPerson() {
 			<div className="form-group">
 				<label htmlFor="exampleInputPassword1">Contraseña</label>
 
-				<input type="password" className="form-control" id="exampleInputPassword1" placeholder="Contraseña" />
+				<input
+					type="password"
+					className="form-control"
+					id="exampleInputPassword1"
+					placeholder="Contraseña"
+					onChange={passwordHandler}
+				/>
 			</div>
 			<div className="form-group">
 				<label htmlFor="exampleInputPassword1">Repetir Contraseña</label>
