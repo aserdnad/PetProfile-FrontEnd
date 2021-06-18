@@ -81,17 +81,22 @@ export function FormPerson() {
 				})
 			});
 			let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
+
 			if (resp.ok) {
+				alert("Usted se ha registrado exitosamente");
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
 				/*console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes */
+
 				console.log(data); //this will print on the console the exact object received from the server
 			} else {
+				alert("uy! Parece que hubo un error. Mejor le preguntamos a Ernesto ");
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
 				console.log(data); //this will print on the console the exact object received from the server
 			}
 		} catch (error) {
 			//error handling
+			alert("uy! Parece que hubo un error. Mejor le preguntamos a Ernesto ");
 			console.log(error);
 		}
 	};
