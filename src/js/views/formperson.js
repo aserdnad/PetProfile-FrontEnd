@@ -2,54 +2,50 @@ import React from "react";
 import { useState } from "react";
 
 export function FormPerson() {
-	const [UserName, setUserName] = useState("");
-	const [Name, setName] = useState("");
-	const [Apellido, setApellido] = useState("");
-	const [Contacto, setContacto] = useState("");
-	const [FechaNacimiento, setFechaNacimiento] = useState("");
-	const [Pais, setPais] = useState("");
-	const [Ciudad, setCiudad] = useState("");
-	const [Direccion, setDireccion] = useState("");
-	const [Email, setEmail] = useState("");
-	const [Password, setPassword] = useState("");
+	const [userName, setUserName] = useState("");
+	const [name, setName] = useState("");
+	const [apellido, setApellido] = useState("");
+	const [contacto, setContacto] = useState("");
+	const [fechaNacimiento, setFechaNacimiento] = useState("");
+	const [pais, setPais] = useState("");
+	const [ciudad, setCiudad] = useState("");
+	const [direccion, setDireccion] = useState("");
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-	function UserNameHandler(event) {
+	function userNameHandler(event) {
 		setUserName(event.target.value);
 	}
 
-	function NameHandler(event) {
+	function nameHandler(event) {
 		setName(event.target.value);
 	}
 
-	function ApellidoHandler(event) {
+	function apellidoHandler(event) {
 		setApellido(event.target.value);
 	}
 
-	function ApellidoHandler(event) {
-		setApellido(event.target.value);
-	}
-
-	function ContactoHandler(event) {
+	function contactoHandler(event) {
 		setContacto(event.target.value);
 	}
 
-	function FechaNacimientoHandler(event) {
+	function fechaNacimientoHandler(event) {
 		setFechaNacimiento(event.target.value);
 	}
 
-	function PaisHandler(event) {
+	function paisHandler(event) {
 		setPais(event.target.value);
 	}
 
-	function CiudadHandler(event) {
+	function ciudadHandler(event) {
 		setCiudad(event.target.value);
 	}
 
-	function DireccionHandler(event) {
+	function direccionHandler(event) {
 		setDireccion(event.target.value);
 	}
 
-	function EmailHandler(event) {
+	function emailHandler(event) {
 		setEmail(event.target.value);
 	}
 
@@ -62,22 +58,22 @@ export function FormPerson() {
 			event.preventDefault();
 			event.stopPropagation();
 
-			let resp = await fetch("https://3000-sapphire-crow-ozz6zm0k.ws-us08.gitpod.io/sign-up", {
+			let resp = await fetch("https://3000-amaranth-narwhal-ssj0vb1f.ws-us09.gitpod.io/sign-up", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
 				},
 				body: JSON.stringify({
 					/* Homologacion de los nombres de los estados en frontend con los nombres de las variables en backend */
-					user_name: UserName,
-					name: Name,
-					last_name: Apellido,
-					phone: Contacto,
-					birthday: FechaNacimiento,
-					country: Pais,
-					city: Ciudad,
-					email: Email,
-					password: Password
+					user_name: userName,
+					name: name,
+					last_name: apellido,
+					phone: contacto,
+					birthday: fechaNacimiento,
+					country: pais,
+					city: ciudad,
+					email: email,
+					password: password
 				})
 			});
 			let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
@@ -112,7 +108,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={UserNameHandler}
+					onChange={userNameHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -122,7 +118,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={NameHandler}
+					onChange={nameHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -132,7 +128,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={ApellidoHandler}
+					onChange={apellidoHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -142,7 +138,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={ContactoHandler}
+					onChange={contactoHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -152,7 +148,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={FechaNacimientoHandler}
+					onChange={fechaNacimientoHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -162,7 +158,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={PaisHandler}
+					onChange={paisHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -172,7 +168,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={CiudadHandler}
+					onChange={ciudadHandler}
 				/>
 			</div>
 			<div className="form-group">
@@ -182,7 +178,7 @@ export function FormPerson() {
 					className="form-control"
 					id="formGroupExampleInput"
 					placeholder=""
-					onChange={DireccionHandler}
+					onChange={direccionHandler}
 				/>
 			</div>
 			<h1>Datos de la cuenta</h1>
@@ -195,7 +191,7 @@ export function FormPerson() {
 					id="exampleInputEmail1"
 					aria-describedby="emailHelp"
 					placeholder="Introduce correo electronico"
-					onChange={EmailHandler}
+					onChange={emailHandler}
 				/>
 			</div>
 			<div className="form-group">
