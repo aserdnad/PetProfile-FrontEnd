@@ -47,7 +47,7 @@ export function FormPet() {
 				headers: {
 					"Content-Type": "application/json"
 				},
-				// email prueba aislada de la app: dumberson@gmail.com
+				// email y fecha de nacimiento - prueba aislada
 				body: JSON.stringify({
 					email: "videzere@gmail.com",
 					name,
