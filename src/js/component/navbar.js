@@ -7,13 +7,10 @@ export const Navbar = () => {
 	const history = useHistory();
 	const handleClick1 = () => history.push("/FormPerson");
 	const handleClick2 = () => history.push("/LogIn");
-	useEffect(
-		() => {
-			console.log(match);
-			console.log(history.location.pathname);
-		},
-		[match]
-	);
+	useEffect(() => {
+		console.log(match);
+		console.log(history.location.pathname);
+	}, [match]);
 	return (
 		<nav className="navbar expand-lg navbar-dark bg-dark m-4">
 			<Link to="/">
