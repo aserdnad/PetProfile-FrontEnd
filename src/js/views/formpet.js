@@ -1,8 +1,10 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Form } from "react-bootstrap";
 
 export function FormPet() {
+	const history = useHistory();
+
 	const [name, setName] = useState("");
 	const [species, setSpecies] = useState("");
 	const [race, setRace] = useState("");
@@ -60,15 +62,19 @@ export function FormPet() {
 			});
 			let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
 			if (resp.ok) {
+				alert("Usted ha registrado a su mascota exitosamente");
 				console.log(resp.ok); // will be true if the response is successfull
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
 				// console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes
 				console.log(data); //this will print on the console the exact object received from the server
+				history.push("/persona");
 			} else {
+				alert("Parece que hubo un error. Intente de nuevo");
 				console.log(resp.status); // the status code = 200 or code = 400 etc.
 				console.log(data); //this will print on the console the exact object received from the server
 			}
 		} catch (error) {
+			alert("Parece que hubo un error. Intente de nuevo");
 			//error handling
 			console.log(error);
 		}
