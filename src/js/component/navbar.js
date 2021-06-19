@@ -18,7 +18,7 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 				{history.location.pathname == "/" && (
-					<Link>
+					<Link to="/">
 						<button className="btn btn-light m-1 p-1" type="button" onClick={handleClick1}>
 							¡Regístrate!
 						</button>

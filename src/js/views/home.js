@@ -1,22 +1,20 @@
-import React from "react";
-// import pets1 from "../../img/pets1.jpg";
+import React, { useContext, useState } from "react";
 import logo from "../../img/logo.png";
 import "../../styles/home.scss";
-import { Row, Col, Jumbotron, Button, Card, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
-
-// export const Home = () => (
-// 	<div className="text-center m-5 p-5">
-// 		<p>
-// 			<img src={pets1} />
-// 		</p>
-// 		<h1>Con Pet Profile,</h1>
-// 		<h1>no te pierdas ni un solo momento de tu mastoca,</h1>
-// 		<h1>¡Al alcance de un solo clic!</h1>
-// 	</div>
-// );
+import { Row, Col, Jumbotron, Card } from "react-bootstrap";
+import { Context } from "../store/appContext";
 
 export const Home = () => {
+	const [usuario, setUsuario] = useState("");
+	const [contrasena, setContrasena] = useState("");
+	const { actions } = useContext(Context);
+
+	const login = (usuario, contrasena) => {
+		actions.login(usuario, contrasena);
+		setUsuario("");
+		setContrasena("");
+	};
+
 	return (
 		<Jumbotron>
 			<Row>
@@ -29,32 +27,34 @@ export const Home = () => {
 				<Col className="d-flex justify-content-center">
 					<Card style={{ width: "18rem" }}>
 						<Card.Body>
-							<Form className="mt-3">
-								<Form.Group className="mb-3" controlId="formBasicText">
-									<Form.Label>Nombre de usuario</Form.Label>
-									<Form.Control type="text" placeholder="Enter usuario" />
-								</Form.Group>
-
-								<Form.Group className="mb-3" controlId="formBasicPassword">
-									<Form.Label>Contraseña</Form.Label>
-									<Form.Control type="password" placeholder="Contraseña" />
-								</Form.Group>
-								<Row>
-									<Button className="mx-auto" variant="primary" type="submit">
-										{"¡Inicia Sesión!"}
-									</Button>
-								</Row>
-								<Form.Text className="text-muted text-center mt-3">
-									{"Que esperas para registrarte?"}
-								</Form.Text>
-								<Row>
-									<Link to="/formperson" className="mx-auto">
-										<Button className="mx-auto mt-4" variant="danger">
-											{"¡Regístrate!"}
-										</Button>
-									</Link>
-								</Row>
-							</Form>
+							<form>
+								<div className="mb-3">
+									<label>Nombre de usuario</label>
+									<input
+										type="text"
+										placeholder="Email"
+										value={usuario}
+										onChange={e => setUsuario(e.target.value)}
+									/>
+								</div>
+								<div className="mb-3">
+									<label>Contraseña</label>
+									<input
+										type="password"
+										placeholder="Contraseña"
+										value={contrasena}
+										onChange={e => setContrasena(e.target.value)}
+									/>
+								</div>
+							</form>
+							<div className="row d-flex justify-content-center">
+								<button className="btn btn-primary mt-3" onClick={e => login(usuario, contrasena)}>
+									¡Inicia Sesión!
+								</button>
+							</div>
+							<div className="row d-flex justify-content-center">
+								<button className="btn btn-danger mt-3">¡Regístrate!</button>
+							</div>
 						</Card.Body>
 					</Card>
 				</Col>
