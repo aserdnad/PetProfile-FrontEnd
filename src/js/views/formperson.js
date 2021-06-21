@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-
+import { Alert } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 export function FormPerson() {
 	const [userName, setUserName] = useState("");
 	const [name, setName] = useState("");
@@ -12,6 +13,8 @@ export function FormPerson() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const { actions } = useContext(Context);
+	const [error, setError] = useState(false);
+	const history = useHistory();
 
 	function userNameHandler(event) {
 		setUserName(event.target.value);
@@ -49,8 +52,18 @@ export function FormPerson() {
 		setPassword(event.target.value);
 	}
 
-	const signIn = (e, userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
-		actions.signIn(userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password);
+	const signIn = async (e, userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
+		const resultado = await actions.signIn(
+			userName,
+			name,
+			apellido,
+			contacto,
+			fechaNacimiento,
+			pais,
+			ciudad,
+			email,
+			password
+		);
 		setUserName("");
 		setName("");
 		setApellido("");
@@ -60,10 +73,17 @@ export function FormPerson() {
 		setCiudad("");
 		setEmail("");
 		setPassword("");
+		console.log(resultado, "soy resultadoooooo");
+		if (resultado) {
+			history.push("/usuario");
+		} else {
+			setError(true);
+		}
 	};
 
 	return (
 		<div className="container">
+			{error && <Alert variant="danger">Hubo un error</Alert>}
 			<form className="form-format">
 				<h1>Datos personales</h1>
 				<hr className="style2" />

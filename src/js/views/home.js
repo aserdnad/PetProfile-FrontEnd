@@ -1,22 +1,34 @@
 import React, { useContext, useState } from "react";
 import logo from "../../img/logo.png";
 import "../../styles/home.scss";
-import { Row, Col, Jumbotron, Card } from "react-bootstrap";
+import { Row, Col, Jumbotron, Card, Alert } from "react-bootstrap";
 import { Context } from "../store/appContext";
-
+import { useHistory } from "react-router-dom";
 export const Home = () => {
 	const [usuario, setUsuario] = useState("");
 	const [contrasena, setContrasena] = useState("");
+	const [error, setError] = useState(false);
 	const { actions } = useContext(Context);
+	const history = useHistory();
 
-	const login = (usuario, contrasena) => {
-		actions.login(usuario, contrasena);
+	const login = async (usuario, contrasena) => {
+		const resultado = await actions.login(usuario, contrasena);
 		setUsuario("");
 		setContrasena("");
+		if (resultado) {
+			history.push("/usuario");
+		} else {
+			setError(true);
+		}
+	};
+
+	const registro = () => {
+		history.push("/formperson");
 	};
 
 	return (
 		<Jumbotron>
+			{error && <Alert variant="danger">Hubo un error en el usuario o la contraseña</Alert>}
 			<Row>
 				<Col className="text-center">
 					<img className="w-25" src={logo} />
@@ -53,7 +65,9 @@ export const Home = () => {
 								</button>
 							</div>
 							<div className="row d-flex justify-content-center">
-								<button className="btn btn-danger mt-3">¡Regístrate!</button>
+								<button className="btn btn-danger mt-3" onClick={registro}>
+									¡Regístrate!
+								</button>
 							</div>
 						</Card.Body>
 					</Card>
