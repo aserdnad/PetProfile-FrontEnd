@@ -28,7 +28,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (usuario, contrasena) => {
 				try {
-					const response = await fetch("https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/log-in", {
+					const response = await fetch("https://3000-silver-boar-w4f6bwgo.ws-us08.gitpod.io/log-in", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			signIn: async (userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
 				try {
-					let resp = await fetch("https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/sign-up", {
+					let resp = await fetch("https://3000-silver-boar-w4f6bwgo.ws-us08.gitpod.io/sign-up", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -79,6 +79,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return tienda;
 					}
 				} catch (error) {
+					console.log(error);
+				}
+			},
+			petAgregar: async (name, species, race, gender, birthday, age, weight, height) => {
+				const store = getStore();
+				try {
+					let resp = await fetch(`https://3000-silver-boar-w4f6bwgo.ws-us08.gitpod.io/pet`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							email: store.usuario.email,
+							name: name,
+							race: race,
+							gender: gender,
+							age: age,
+							species: species,
+							weight: weight,
+							height: height,
+							birthday: birthday
+						})
+					});
+					let data = await resp.json();
+					if (resp.ok) {
+						alert("Usted ha registrado a su mascota exitosamente");
+						console.log(resp.ok);
+						console.log(resp.status);
+					} else {
+						alert("ELSEEEE");
+						console.log(resp.status);
+						console.log(data);
+					}
+				} catch (error) {
+					alert("CATHCHCHHC");
 					console.log(error);
 				}
 			},

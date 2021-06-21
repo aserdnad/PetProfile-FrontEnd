@@ -1,24 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/home.scss";
-import { Row, Col, Jumbotron, Button, Card, Form } from "react-bootstrap";
+import { Row, Col, Button, Card } from "react-bootstrap";
 import { Mascota } from "../component/mascota";
+import { Context } from "../store/appContext";
+import { useHistory } from "react-router-dom";
 
 export const Persona = () => {
-	const [prueba, setPrueba] = useState(true);
+	const [prueba, setPrueba] = useState(false);
+	const { store, actions } = useContext(Context);
+	const history = useHistory();
+
+	const formMascota = () => {
+		history.push("/formpet");
+	};
 
 	return (
 		<div>
-			<h1 className="text-center">Nombre ususario</h1>
+			<h1 className="text-center">
+				{store.usuario.name} {store.usuario.last_name}
+			</h1>
 			<Row className="mt-3">
 				<Col className="d-flex justify-content-center text-center">
 					<Card style={{ width: "40rem" }}>
 						<Card.Body>
 							<Card.Title>Informacion</Card.Title>
-							<Card.Text>email usuario</Card.Text>
-							<Card.Text>telefono usuario</Card.Text>
-							<Card.Text>cumpleanos usuario</Card.Text>
-							<Card.Text>direccion</Card.Text>
-							<Card.Text>Pais, ciudad</Card.Text>
+							<Card.Text>nombre de usuario: {store.usuario.user_name}</Card.Text>
+							<Card.Text>email: {store.usuario.email}</Card.Text>
+							<Card.Text>telefono: {store.usuario.phone}</Card.Text>
+							<Card.Text>cumpleanos: {store.usuario.birthday}</Card.Text>
+							<Card.Text>Pais: {store.usuario.country}</Card.Text>
+							<Card.Text>ciudad: {store.usuario.city}</Card.Text>
 							<Button variant="primary">Editar informacion!</Button>
 						</Card.Body>
 					</Card>
@@ -30,7 +41,7 @@ export const Persona = () => {
 				<Mascota />
 			) : (
 				<div className="text-center">
-					<Button variant="primary" className="mt-2">
+					<Button variant="primary" className="mt-2" onClick={formMascota}>
 						Registra tu primera mascota!
 					</Button>
 				</div>
