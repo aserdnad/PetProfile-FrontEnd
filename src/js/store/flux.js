@@ -110,7 +110,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log(resp.ok);
 						console.log(resp.status);
-						setStore({ mascotas: [...store.mascotas, data] });
+						setStore({ mascotas: [...store.mascotas, ...data] });
 						return true;
 					} else {
 						console.log(resp.status);
@@ -130,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log(resp.ok);
 						console.log(resp.status);
-						setStore({ mascotas: [...store.mascotas, data] });
+						setStore({ mascotas: [...store.mascotas, ...data] });
 					} else {
 						console.log(resp.status);
 						console.log(data);

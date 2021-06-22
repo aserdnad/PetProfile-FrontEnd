@@ -36,9 +36,9 @@ export const Persona = () => {
 			</Row>
 
 			<h1 className="text-center mt-5">Mascotas</h1>
-			{store.mascotas[0] ? (
+			{store.mascotas.length > 0 ? (
 				<div>
-					{store.mascotas[0].map((animal, index) => {
+					{store.mascotas.map((animal, index) => {
 						return (
 							<div key={index}>
 								<Mascota
