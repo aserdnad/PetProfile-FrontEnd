@@ -73,7 +73,6 @@ export function FormPerson() {
 		setCiudad("");
 		setEmail("");
 		setPassword("");
-		console.log(resultado, "soy resultadoooooo");
 		if (resultado) {
 			history.push("/usuario");
 		} else {

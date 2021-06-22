@@ -14,7 +14,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			token: [],
-			usuario: []
+			usuario: [],
+			mascotas: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -28,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (usuario, contrasena) => {
 				try {
-					const response = await fetch("https://3000-silver-boar-w4f6bwgo.ws-us08.gitpod.io/log-in", {
+					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/log-in", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -43,6 +44,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: data.token });
 						setStore({ usuario: data.user });
 						console.log(data);
+						const tienda = getActions();
+						const store = getStore();
+						tienda.petConseguir(store.usuario.user_name);
 						return true;
 					} else {
 						console.log(data);
@@ -54,7 +58,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			signIn: async (userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
 				try {
-					let resp = await fetch("https://3000-silver-boar-w4f6bwgo.ws-us08.gitpod.io/sign-up", {
+					let resp = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/sign-up", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -85,7 +89,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			petAgregar: async (name, species, race, gender, birthday, age, weight, height) => {
 				const store = getStore();
 				try {
-					let resp = await fetch(`https://3000-silver-boar-w4f6bwgo.ws-us08.gitpod.io/pet`, {
+					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet`, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -104,16 +108,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 					let data = await resp.json();
 					if (resp.ok) {
-						alert("Usted ha registrado a su mascota exitosamente");
 						console.log(resp.ok);
 						console.log(resp.status);
+						setStore({ mascotas: [...store.mascotas, data] });
+						return true;
 					} else {
-						alert("ELSEEEE");
+						console.log(resp.status);
+						console.log(data);
+						return false;
+					}
+				} catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
+			petConseguir: async usuario => {
+				const store = getStore();
+				try {
+					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet/${usuario}`);
+					let data = await resp.json();
+					if (resp.ok) {
+						console.log(resp.ok);
+						console.log(resp.status);
+						setStore({ mascotas: [...store.mascotas, data] });
+					} else {
 						console.log(resp.status);
 						console.log(data);
 					}
 				} catch (error) {
-					alert("CATHCHCHHC");
 					console.log(error);
 				}
 			},

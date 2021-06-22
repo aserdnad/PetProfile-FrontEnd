@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
 export function FormPet() {
@@ -14,6 +14,7 @@ export function FormPet() {
 	const [age, setAge] = useState("");
 	const [weight, setWeight] = useState("");
 	const [height, setHeight] = useState("");
+	const [error, setError] = useState(false);
 	const { actions } = useContext(Context);
 
 	function nameHandler(event) {
@@ -50,10 +51,16 @@ export function FormPet() {
 		setAge("");
 		setWeight("");
 		setHeight("");
+		if (resultado) {
+			history.push("/usuario");
+		} else {
+			setError(true);
+		}
 	};
 
 	return (
 		<div className="container">
+			{error && <Alert variant="danger">Hubo un error</Alert>}
 			<form className="form-format">
 				<h1>Datos de la Mascota</h1>
 				<hr className="style2" />

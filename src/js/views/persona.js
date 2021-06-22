@@ -6,7 +6,6 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 
 export const Persona = () => {
-	const [prueba, setPrueba] = useState(false);
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
 
@@ -37,8 +36,25 @@ export const Persona = () => {
 			</Row>
 
 			<h1 className="text-center mt-5">Mascotas</h1>
-			{prueba ? (
-				<Mascota />
+			{store.mascotas[0] ? (
+				<div>
+					{store.mascotas[0].map((animal, index) => {
+						return (
+							<div key={index}>
+								<Mascota
+									age={animal.age}
+									birthday={animal.birthday}
+									gender={animal.gender}
+									height={animal.height}
+									name={animal.name}
+									race={animal.race}
+									species={animal.species}
+									weight={animal.weight}
+								/>
+							</div>
+						);
+					})}
+				</div>
 			) : (
 				<div className="text-center">
 					<Button variant="primary" className="mt-2" onClick={formMascota}>
