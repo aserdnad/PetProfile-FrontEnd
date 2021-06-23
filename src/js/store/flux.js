@@ -31,7 +31,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const response = await fetch("https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/log-in", {
 						method: "POST",
 						headers: {
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							"token" : store.usuario.token
+
 						},
 						body: JSON.stringify({
 							email: usuario,

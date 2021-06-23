@@ -7,7 +7,7 @@ export const Persona = () => {
 	const [prueba, setPrueba] = useState(true);
 
 	return (
-		<div>
+		<div className="container">
 			<h1 className="text-center">Nombre ususario</h1>
 			<Row className="mt-3">
 				<Col className="d-flex justify-content-center text-center">
@@ -35,6 +35,7 @@ export const Persona = () => {
 					</Button>
 				</div>
 			)}
+			<button>Ver historial medico de tus mascotas </button>
 		</div>
 	);
 };
