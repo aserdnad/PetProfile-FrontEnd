@@ -1,30 +1,20 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
 			token: [],
 			usuario: []
 		},
 		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+			},
+			logout: () => {
+				const nada = [];
+				setStore({ token: nada });
+				setStore({ usuario: nada });
+				setStore({ mascotas: nada });
 			},
 			login: async (usuario, contrasena) => {
 				try {
@@ -84,19 +74,93 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-			changeColor: (index, color) => {
-				//get the store
+			petAgregar: async (name, species, race, gender, birthday, age, weight, height) => {
 				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
+				try {
+					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet`, {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							email: store.usuario.email,
+							name: name,
+							race: race,
+							gender: gender,
+							age: age,
+							species: species,
+							weight: weight,
+							height: height,
+							birthday: birthday
+						})
+					});
+					let data = await resp.json();
+					if (resp.ok) {
+						console.log(data);
+						setStore({ mascotas: [...store.mascotas, data] });
+						return true;
+					} else {
+						console.log(resp.status);
+						console.log(data);
+						return false;
+					}
+				} catch (error) {
+					console.log(error);
+					return false;
+				}
+			},
+			petConseguir: async usuario => {
+				const store = getStore();
+				try {
+					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet/${usuario}`);
+					let data = await resp.json();
+					if (resp.ok) {
+						setStore({ mascotas: [...store.mascotas, ...data] });
+					} else {
+						console.log(data);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			agregarEvento: async data => {
+				console.log(data);
+				const store = getStore();
+				let titulo = data.event.title;
+				let comenzar = data.event.startStr;
+				let terminar = data.event.endStr;
+				console.log(data.event._instance.range.start);
+				console.log(data.event._instance.range.end);
+				try {
+					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/calendar", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							email: store.usuario.email,
+							name: store.mascotas[0].name,
+							start: comenzar,
+							end: terminar,
+							title: titulo,
+							user_id: store.usuario.id,
+							pet_id: store.mascotas[0].id
+						})
+					});
+					const data = await response.json();
+					console.log(data);
+					if (response.ok) {
+						console.log(response.ok);
+						console.log(response.status);
+						console.log(data);
+					} else {
+						console.log(data);
+						console.log(response.ok);
+						console.log(response.status);
+					}
+				} catch (error) {
+					console.log(error);
+				}
 			}
 		}
 	};
