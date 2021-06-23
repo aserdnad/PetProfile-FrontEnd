@@ -27,7 +27,7 @@ export const Home = () => {
 	};
 
 	return (
-		<Jumbotron>
+		<Jumbotron className="mt-5">
 			{error && <Alert variant="danger">Hubo un error en el usuario o la contraseña</Alert>}
 			<Row>
 				<Col className="text-center">

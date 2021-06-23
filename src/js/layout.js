@@ -25,7 +25,6 @@ const Layout = () => {
 		<div className="d-flex flex-column">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
 					<Switch>
 						<Route exact path="/">
 							<Home />
@@ -34,15 +33,19 @@ const Layout = () => {
 							<FormPerson />
 						</Route>
 						<Route exact path="/formpet">
+							<Navbar />
 							<FormPet />
 						</Route>
 						<Route exact path="/calendario">
+							<Navbar />
 							<Calendario />
 						</Route>
 						<Route exact path="/usuario">
+							<Navbar />
 							<Persona />
 						</Route>
 						<Route>
+							<Navbar />
 							<Error />
 						</Route>
 						{/* lo de abajo es basura en algun momento lo borrare Andreas */}

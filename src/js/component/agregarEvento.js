@@ -42,7 +42,7 @@ export const AgregarEvento = ({ isOpen, onClose, onEventAdded }) => {
 };
 
 AgregarEvento.propTypes = {
-	isOpen: PropTypes.bool,
-	onClose: PropTypes.bool,
-	onEventAdded: PropTypes.func
+	isOpen: PropTypes.any,
+	onClose: PropTypes.any,
+	onEventAdded: PropTypes.any
 };

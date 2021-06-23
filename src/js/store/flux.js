@@ -27,6 +27,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
+			logout: () => {
+				const nada = [];
+				setStore({ token: nada });
+				setStore({ usuario: nada });
+				setStore({ mascotas: nada });
+			},
 			login: async (usuario, contrasena) => {
 				try {
 					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/log-in", {
@@ -108,9 +114,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 					let data = await resp.json();
 					if (resp.ok) {
-						console.log(resp.ok);
-						console.log(resp.status);
-						setStore({ mascotas: [...store.mascotas, ...data] });
+						console.log(data);
+						setStore({ mascotas: [...store.mascotas, data] });
 						return true;
 					} else {
 						console.log(resp.status);
@@ -128,12 +133,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet/${usuario}`);
 					let data = await resp.json();
 					if (resp.ok) {
-						console.log(resp.ok);
-						console.log(resp.status);
 						setStore({ mascotas: [...store.mascotas, ...data] });
 					} else {
-						console.log(resp.status);
 						console.log(data);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			agregarEvento: async data => {
+				console.log(data);
+				const store = getStore();
+				let titulo = data.event.title;
+				let comenzar = data.event.startStr;
+				let terminar = data.event.endStr;
+				try {
+					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/calendar", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							email: store.usuario.email,
+							name: store.mascotas[0].name,
+							start: comenzar,
+							end: terminar,
+							title: titulo,
+							user_id: store.usuario.id,
+							pet_id: store.mascotas[0].id
+						})
+					});
+					const data = await response.json();
+					console.log(data);
+					if (response.ok) {
+						console.log(response.ok);
+						console.log(response.status);
+						console.log(data);
+					} else {
+						console.log(data);
+						console.log(response.ok);
+						console.log(response.status);
 					}
 				} catch (error) {
 					console.log(error);
