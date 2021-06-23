@@ -2,25 +2,25 @@ import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 
 export function MyDropzone() {
-	const onDrop = useCallback( async acceptedFiles => {
-        try {
-            fetch("https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/XXXXXXXXXX", /* Falta agregar el endpoint */
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "token" : store.usuario.token
-            },
-            body: {
-                "files" : acceptedFiles
+	const onDrop = useCallback(async acceptedFiles => {
+		try {
+			fetch(
+				"https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/XXXXXXXXXX" /* Falta agregar el endpoint */,
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						token: store.usuario.token
+					},
+					body: {
+						files: acceptedFiles
+					}
+				}
+			);
+		} catch (error) {
+			print(error);
+		}
 
-        }});
-            
-        } catch (error) {
-            print(error);
-            
-        }
-        
 		// Do something with the files
 	}, []);
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
@@ -36,18 +36,3 @@ export function MyDropzone() {
 		</div>
 	);
 }
-
-/*
-import React, { Component } from "react";
-
-import Dropzone from "react-dropzone";
-
-export function TheDropZone() {
-	return (
-		<div>
-			<h1>Drop and send</h1>
-			<Dropzone>{() => <p>Dropea aqui </p>}</Dropzone>
-		</div>
-	);
-}
-*/

@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import "../../styles/HistorialMedico.scss";
-import Dropzone from "react-dropzone";
 import { MyDropzone } from "../component/dropzone";
 
 export function HistorialMedico() {
