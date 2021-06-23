@@ -3,8 +3,6 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { Home } from "./views/home";
-import { Demo } from "./views/demo";
-import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -48,13 +46,6 @@ const Layout = () => {
 							<Navbar />
 							<Error />
 						</Route>
-						{/* lo de abajo es basura en algun momento lo borrare Andreas */}
-						{/* <Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route> */}
 					</Switch>
 					<Footer />
 				</ScrollToTop>
