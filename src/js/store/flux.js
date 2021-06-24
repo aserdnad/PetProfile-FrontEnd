@@ -2,7 +2,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: [],
-			usuario: []
+			usuario: [],
+			mascotas: []
 		},
 		actions: {
 			loadSomeData: () => {

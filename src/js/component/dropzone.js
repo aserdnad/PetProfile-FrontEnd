@@ -1,26 +1,24 @@
 import React, { useCallback } from "react";
 import { useDropzone } from "react-dropzone";
+import { store } from "../store/appContext";
 
-export function MyDropzone() {
+export function MyDropzone(prop) {
+	let userName = "store.usuario";
+
 	const onDrop = useCallback(async acceptedFiles => {
 		try {
-			fetch(
-				"https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/XXXXXXXXXX" /* Falta agregar el endpoint */,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						token: store.usuario.token
-					},
-					body: {
-						files: acceptedFiles
-					}
+			fetch(`https://3000-magenta-penguin-zgcydz94.ws-us08.gitpod.io/history/${userName}/${petName}`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: {
+					files: acceptedFiles
 				}
-			);
+			});
 		} catch (error) {
-			print(error);
+			console.log(error);
 		}
-
 		// Do something with the files
 	}, []);
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
