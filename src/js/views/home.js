@@ -4,12 +4,15 @@ import "../../styles/home.scss";
 import { Row, Col, Jumbotron, Card, Alert } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
+import QRCode from "qrcode.react";
+
 export const Home = () => {
 	const [usuario, setUsuario] = useState("");
 	const [contrasena, setContrasena] = useState("");
 	const [error, setError] = useState(false);
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	const handleClick = () => history.push("/xyz");
 
 	const login = async (usuario, contrasena) => {
 		const resultado = await actions.login(usuario, contrasena);
@@ -33,15 +36,19 @@ export const Home = () => {
 				<Col className="text-center">
 					<img className="w-25" src={logo} />
 					<h1 className="mt-4">Pet Profile</h1>
-					<p className="mt-2">Bienvenido a Pet Profile, el lugar donde podras</p>
-					<p className="mt-2">organizar todos los datos de tu mascota!</p>
+					<p className="mt-2">Bienvenido a Pet Profile, no te pierdas</p>
+					<p className="mt-2">ni un solo momento de tu mastoca,</p>
+					<p className="mt-2">y organiza todos sus datos.</p>
+					<p>¡Al alcance de un solo clic!</p>
 				</Col>
 				<Col className="d-flex justify-content-center">
 					<Card style={{ width: "18rem" }}>
 						<Card.Body>
 							<form>
 								<div className="mb-3">
-									<label>Nombre de usuario</label>
+									<label>
+										<strong>Nombre de usuario</strong>
+									</label>
 									<input
 										type="text"
 										placeholder="Email"
@@ -50,7 +57,9 @@ export const Home = () => {
 									/>
 								</div>
 								<div className="mb-3">
-									<label>Contraseña</label>
+									<label>
+										<strong>Contraseña</strong>
+									</label>
 									<input
 										type="password"
 										placeholder="Contraseña"
@@ -68,6 +77,12 @@ export const Home = () => {
 								<button className="btn btn-danger mt-3" onClick={registro}>
 									¡Regístrate!
 								</button>
+							</div>
+							<div className="row d-flex justify-content-center">
+								<p>
+									<br />
+									<QRCode value="http://localhost:3001" onClick={handleClick} />
+								</p>
 							</div>
 						</Card.Body>
 					</Card>

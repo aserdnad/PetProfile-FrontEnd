@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (usuario, contrasena) => {
 				try {
-					const response = await fetch("https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/log-in", {
+					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/log-in", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
@@ -46,7 +46,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			signIn: async (userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
 				try {
-					let resp = await fetch("https://3000-harlequin-barracuda-u46rzrk9.ws-eu08.gitpod.io/sign-up", {
+					let resp = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/sign-up", {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
