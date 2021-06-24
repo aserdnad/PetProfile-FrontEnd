@@ -35,7 +35,10 @@ export const Persona = () => {
 					</Button>
 				</div>
 			)}
-			<button>Ver historial medico de tus mascotas </button>
+
+			<button type="button" className="btn btn-primary">
+				Ver historial medico de tus mascotas
+			</button>
 		</div>
 	);
 };

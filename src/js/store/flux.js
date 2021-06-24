@@ -22,8 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json",
-							"token" : store.usuario.token
-
+							token: store.usuario.token
 						},
 						body: JSON.stringify({
 							email: usuario,

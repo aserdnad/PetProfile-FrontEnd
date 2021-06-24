@@ -12,7 +12,6 @@ import { FormPet } from "./views/formpet";
 import { Error } from "./views/error";
 import { Persona } from "./views/persona";
 import { Calendario } from "./views/calendario";
-import { Cloudinary } from "./component/upload";
 import { HistorialMedico } from "./views/HistorialMedico";
 
 //create your first component
