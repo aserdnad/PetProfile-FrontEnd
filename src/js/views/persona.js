@@ -13,6 +13,10 @@ export const Persona = () => {
 		history.push("/formpet");
 	};
 
+	const irse = () => {
+		history.push("/editar");
+	};
+
 	return (
 		<div>
 			<h1 className="text-center">
@@ -29,7 +33,9 @@ export const Persona = () => {
 							<Card.Text>cumpleanos: {store.usuario.birthday}</Card.Text>
 							<Card.Text>Pais: {store.usuario.country}</Card.Text>
 							<Card.Text>ciudad: {store.usuario.city}</Card.Text>
-							<Button variant="primary">Editar informacion!</Button>
+							<Button variant="primary" onClick={irse}>
+								Editar informacion!
+							</Button>
 						</Card.Body>
 					</Card>
 				</Col>

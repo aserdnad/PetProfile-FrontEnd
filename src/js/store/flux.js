@@ -3,13 +3,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			token: [],
 			usuario: [],
-			mascotas: []
+			mascotas: [],
+			vacunas: []
 		},
 		actions: {
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
+			},
+			cambiarVacunas: (title, start) => {
+				const store = getStore();
+				setStore({ vacunas: [...store.vacunas, { title: title, date: start }] });
 			},
 			logout: () => {
 				const nada = [];
@@ -76,6 +81,33 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
+			cambiarInfo: async (contacto, pais, ciudad, email, id, token) => {
+				try {
+					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/user/${id}`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${token}`
+						},
+						body: JSON.stringify({
+							phone: contacto,
+							country: pais,
+							city: ciudad,
+							email: email
+						})
+					});
+					let data = await resp.json();
+					if (resp.ok) {
+						const tienda = getActions();
+						console.log(data);
+						const store = getStore();
+						setStore({ usuario: data });
+						return true;
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
 			petAgregar: async (name, species, race, gender, birthday, age, weight, height) => {
 				const store = getStore();
 				try {
@@ -126,13 +158,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			agregarEvento: async data => {
-				console.log(data);
+				console.log(data, "soy yo manito");
 				const store = getStore();
 				let titulo = data.event.title;
 				let comenzar = data.event.startStr;
 				let terminar = data.event.endStr;
-				console.log(data.event._instance.range.start);
-				console.log(data.event._instance.range.end);
 				try {
 					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/calendar", {
 						method: "POST",

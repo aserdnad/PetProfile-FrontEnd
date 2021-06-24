@@ -10,7 +10,7 @@ export const Calendar = () => {
 	const [modalOpen, setModalOpen] = useState(false);
 	const [event, setEvent] = useState([]);
 	const calendarRef = useRef(null);
-	const { actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 
 	const onEventAdded = event => {
 		let calendarApi = calendarRef.current.getApi();
@@ -21,10 +21,10 @@ export const Calendar = () => {
 		actions.agregarEvento(data);
 	};
 
-	async function handleDatesSet(data) {
-		// const response = await axios.get("path/"+moment(data))
-		console.log("hola");
-	}
+	// async function handleDatesSet(data) {
+	// 	// const response = await axios.get("path/"+moment(data))
+	// 	console.log("hola");
+	// }
 
 	return (
 		<section className="container">
@@ -36,8 +36,13 @@ export const Calendar = () => {
 					ref={calendarRef}
 					plugins={[dayGridPlugin]}
 					initialView="dayGridMonth"
-					eventAdd={event => handleEventAdd(event)}
-					dateSet={date => handleDateSet(date)}
+					// events={event => handleEventAdd(event)}
+					events={store.vacunas}
+					// [
+					// 	{ title: "event 1", date: "2021-06-26" },
+					// 	{ title: "event 2", date: "2021-06-27" }
+					// ]
+					// dateSet={date => handleDateSet(date)}
 				/>
 			</div>
 

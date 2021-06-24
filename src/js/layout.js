@@ -12,6 +12,7 @@ import { FormPet } from "./views/formpet";
 import { Error } from "./views/error";
 import { Persona } from "./views/persona";
 import { Calendario } from "./views/calendario";
+import { EditarPerfil } from "./views/editarperfil";
 
 //create your first component
 const Layout = () => {
@@ -41,6 +42,10 @@ const Layout = () => {
 						<Route exact path="/usuario">
 							<Navbar />
 							<Persona />
+						</Route>
+						<Route exact path="/editar">
+							<Navbar />
+							<EditarPerfil />
 						</Route>
 						<Route>
 							<Navbar />
