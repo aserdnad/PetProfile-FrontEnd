@@ -3,6 +3,8 @@ import "../../styles/home.scss";
 import { Row, Col, Jumbotron, Button, Card, Form } from "react-bootstrap";
 import { Mascota } from "../component/mascota";
 
+import QRCode from "qrcode.react";
+
 export const Persona = () => {
 	const [prueba, setPrueba] = useState(true);
 
@@ -19,6 +21,9 @@ export const Persona = () => {
 							<Card.Text>cumpleanos usuario</Card.Text>
 							<Card.Text>direccion</Card.Text>
 							<Card.Text>Pais, ciudad</Card.Text>
+							<Card.Text>
+								<QRCode value="http://localhost:3001" />
+							</Card.Text>
 							<Button variant="primary">Editar informacion!</Button>
 						</Card.Body>
 					</Card>
