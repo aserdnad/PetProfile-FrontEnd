@@ -12,6 +12,7 @@ export const Home = () => {
 	const [error, setError] = useState(false);
 	const { actions } = useContext(Context);
 	const history = useHistory();
+	const handleClick = () => history.push("/xyz");
 
 	const login = async (usuario, contrasena) => {
 		const resultado = await actions.login(usuario, contrasena);
@@ -80,7 +81,7 @@ export const Home = () => {
 							<div className="row d-flex justify-content-center">
 								<p>
 									<br />
-									<QRCode value="http://localhost:3001" />
+									<QRCode value="http://localhost:3001" onClick={handleClick} />
 								</p>
 							</div>
 						</Card.Body>
