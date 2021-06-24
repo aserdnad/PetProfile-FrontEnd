@@ -20,7 +20,6 @@ export const Persona = () => {
 					<Card style={{ width: "40rem" }}>
 						<Card.Body>
 							<Card.Title>Informacion</Card.Title>
-<<<<<<< HEAD
 							<Card.Text>nombre de usuario: {store.usuario.user_name}</Card.Text>
 							<Card.Text>email: {store.usuario.email}</Card.Text>
 							<Card.Text>telefono: {store.usuario.phone}</Card.Text>
@@ -30,17 +29,6 @@ export const Persona = () => {
 							<Button variant="primary" onClick={irse}>
 								Editar informacion!
 							</Button>
-=======
-							<Card.Text>email usuario</Card.Text>
-							<Card.Text>telefono usuario</Card.Text>
-							<Card.Text>cumpleanos usuario</Card.Text>
-							<Card.Text>direccion</Card.Text>
-							<Card.Text>Pais, ciudad</Card.Text>
-							<Card.Text>
-								<QRCode value="http://localhost:3001" />
-							</Card.Text>
-							<Button variant="primary">Editar informacion!</Button>
->>>>>>> 7605149dc0fe829013abc85e8df09f51a31f5940
 						</Card.Body>
 					</Card>
 				</Col>
