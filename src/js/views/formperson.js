@@ -52,7 +52,7 @@ export function FormPerson() {
 		setPassword(event.target.value);
 	}
 
-	const signIn = async (userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
+	const signIn = async (e, userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
 		const resultado = await actions.signIn(
 			userName,
 			name,
@@ -73,6 +73,7 @@ export function FormPerson() {
 		setCiudad("");
 		setEmail("");
 		setPassword("");
+		console.log(resultado, "soy resultadoooooo"); /* lolaso hahahaa */
 		if (resultado) {
 			history.push("/usuario");
 		} else {
@@ -150,7 +151,7 @@ export function FormPerson() {
 			<button
 				className="btn btn-success ml-5"
 				onClick={e =>
-					signIn(userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password)
+					signIn(e, userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password)
 				}>
 				Registrarse
 			</button>

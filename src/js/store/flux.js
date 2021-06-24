@@ -1,4 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	// CAMBIEN ESTA VARIABLE PARA EL BACK SOLO ESTA!!!!!!
+	const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io";
 	return {
 		store: {
 			token: [],
@@ -24,10 +26,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (usuario, contrasena) => {
 				try {
-					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/log-in", {
+					const response = await fetch(`${urlAPI}/log-in`, {
 						method: "POST",
 						headers: {
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							token: store.usuario.token
 						},
 						body: JSON.stringify({
 							email: usuario,
@@ -39,9 +42,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: data.token });
 						setStore({ usuario: data.user });
 						console.log(data);
-						const tienda = getActions();
-						const store = getStore();
-						tienda.petConseguir(store.usuario.user_name);
 						return true;
 					} else {
 						console.log(data);
@@ -53,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			signIn: async (userName, name, apellido, contacto, fechaNacimiento, pais, ciudad, email, password) => {
 				try {
-					let resp = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/sign-up", {
+					let resp = await fetch(`${urlAPI}/sign-up`, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -83,7 +83,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			cambiarInfo: async (contacto, pais, ciudad, email, id, token) => {
 				try {
-					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/user/${id}`, {
+					let resp = await fetch(`${urlAPI}/user/${id}`, {
 						method: "PUT",
 						headers: {
 							"Content-Type": "application/json",
@@ -111,7 +111,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			petAgregar: async (name, species, race, gender, birthday, age, weight, height) => {
 				const store = getStore();
 				try {
-					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet`, {
+					let resp = await fetch(`${urlAPI}/pet`, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"
@@ -146,7 +146,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			petConseguir: async usuario => {
 				const store = getStore();
 				try {
-					let resp = await fetch(`https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/pet/${usuario}`);
+					let resp = await fetch(`${urlAPI}/pet/${usuario}`);
 					let data = await resp.json();
 					if (resp.ok) {
 						setStore({ mascotas: [...store.mascotas, ...data] });
@@ -164,7 +164,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let comenzar = data.event.startStr;
 				let terminar = data.event.endStr;
 				try {
-					const response = await fetch("https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io/calendar", {
+					const response = await fetch(`${urlAPI}/calendar`, {
 						method: "POST",
 						headers: {
 							"Content-Type": "application/json"

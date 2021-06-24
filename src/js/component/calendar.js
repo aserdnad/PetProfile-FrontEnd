@@ -8,7 +8,6 @@ import { Context } from "../store/appContext";
 
 export const Calendar = () => {
 	const [modalOpen, setModalOpen] = useState(false);
-	const [event, setEvent] = useState([]);
 	const calendarRef = useRef(null);
 	const { store, actions } = useContext(Context);
 
@@ -36,13 +35,7 @@ export const Calendar = () => {
 					ref={calendarRef}
 					plugins={[dayGridPlugin]}
 					initialView="dayGridMonth"
-					// events={event => handleEventAdd(event)}
 					events={store.vacunas}
-					// [
-					// 	{ title: "event 1", date: "2021-06-26" },
-					// 	{ title: "event 2", date: "2021-06-27" }
-					// ]
-					// dateSet={date => handleDateSet(date)}
 				/>
 			</div>
 

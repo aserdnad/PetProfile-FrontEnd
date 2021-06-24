@@ -13,6 +13,7 @@ import { Error } from "./views/error";
 import { Persona } from "./views/persona";
 import { Calendario } from "./views/calendario";
 import { EditarPerfil } from "./views/editarperfil";
+import { HistorialMedico } from "./views/HistorialMedico";
 
 //create your first component
 const Layout = () => {
@@ -46,6 +47,10 @@ const Layout = () => {
 						<Route exact path="/editar">
 							<Navbar />
 							<EditarPerfil />
+						</Route>
+						<Route exact path="/historial">
+							<Navbar />
+							<HistorialMedico />
 						</Route>
 						<Route>
 							<Navbar />
