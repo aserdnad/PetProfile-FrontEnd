@@ -10,11 +10,11 @@ export const Home = () => {
 	const [usuario, setUsuario] = useState("");
 	const [contrasena, setContrasena] = useState("");
 	const [error, setError] = useState(false);
-	const { actions } = useContext(Context);
+	const { store, actions } = useContext(Context);
 	const history = useHistory();
 	const handleClick = () => history.push("/xyz");
 
-	const login = async (usuario, contrasena) => {
+	const login = async () => {
 		const resultado = await actions.login(usuario, contrasena);
 		setUsuario("");
 		setContrasena("");
@@ -69,7 +69,7 @@ export const Home = () => {
 								</div>
 							</form>
 							<div className="row d-flex justify-content-center">
-								<button className="btn btn-primary mt-3" onClick={e => login(usuario, contrasena)}>
+								<button className="btn btn-primary mt-3" onClick={login}>
 									¡Inicia Sesión!
 								</button>
 							</div>

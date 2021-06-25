@@ -12,7 +12,7 @@ export function MyDropzone(prop) {
 	const onDrop = useCallback(async () => {
 		for (let file of acceptedFiles) {
 			try {
-				fetch(`https://3000-emerald-sheep-5phsfce8.ws-us08.gitpod.io//history/${userName}/${petName}`, {
+				fetch(`${store.url}/history/${store.usuario.user_name}/${petName}`, {
 					method: "POST",
 					headers: {
 						"Content-Type": "multipart/form-data"

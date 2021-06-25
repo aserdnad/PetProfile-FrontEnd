@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Form } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
+import { Context } from "../store/appContext";
+
+
 
 export function FormPet() {
 	const history = useHistory();
@@ -13,6 +16,8 @@ export function FormPet() {
 	const [age, setAge] = useState("");
 	const [weight, setWeight] = useState("");
 	const [height, setHeight] = useState("");
+	const [error, setError] = useState(false);
+	const { actions } = useContext(Context);
 
 	function nameHandler(event) {
 		setName(event.target.value);
@@ -38,116 +43,67 @@ export function FormPet() {
 	function heightHandler(event) {
 		setHeight(event.target.value);
 	}
-	const handlerSubmit = async e => {
-		try {
-			e.preventDefault();
-			e.stopPropagation();
-			let resp = await fetch(`https://3000-magenta-penguin-zgcydz94.ws-us08.gitpod.io/pet`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				// email y fecha de nacimiento - prueba aislada
-				body: JSON.stringify({
-					email: "videzere@gmail.com",
-					name,
-					species,
-					race,
-					gender,
-					birthday: "28072010",
-					age,
-					weight,
-					height
-				})
-			});
-			let data = await resp.json(); // (returns promise) will try to parse the result as json as return a promise that you can .then for results
-			if (resp.ok) {
-				alert("Usted ha registrado a su mascota exitosamente");
-				console.log(resp.ok); // will be true if the response is successfull
-				console.log(resp.status); // the status code = 200 or code = 400 etc.
-				// console.log(resp.text()); // will try return the exact result as string			//here is were your code should start after the fetch finishes
-				console.log(data); //this will print on the console the exact object received from the server
-				history.push("/persona");
-			} else {
-				alert("Parece que hubo un error. Intente de nuevo");
-				console.log(resp.status); // the status code = 200 or code = 400 etc.
-				console.log(data); //this will print on the console the exact object received from the server
-			}
-		} catch (error) {
-			alert("Parece que hubo un error. Intente de nuevo");
-			//error handling
-			console.log(error);
+	const petAgregar = async (name, species, race, gender, birthday, age, weight, height) => {
+		const resultado = await actions.petAgregar(name, species, race, gender, birthday, age, weight, height);
+		setName("");
+		setSpecies("");
+		setRace("");
+		setGender("");
+		setBirthday("");
+		setAge("");
+		setWeight("");
+		setHeight("");
+		if (resultado) {
+			history.push("/usuario");
+		} else {
+			setError(true);
 		}
 	};
+
 	return (
-		<form className="form-format">
-			<h1>Datos de la Mascota</h1>
-			<hr className="style2" />
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Nombre</label>
-				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={nameHandler} />
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Especie</label>
-				<input
-					type="text"
-					className="form-control"
-					id="formGroupInput"
-					placeholder=""
-					onChange={speciesHandler}
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Raza</label>
-				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={raceHandler} />
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Sexo</label>
-				<input
-					type="text"
-					className="form-control"
-					id="formGroupInput"
-					placeholder=""
-					onChange={genderHandler}
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Fecha de Nacimiento</label>
-				<input
-					type="date"
-					className="form-control"
-					id="formGroupInput"
-					placeholder=""
-					onChange={birthdayHandler}
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Edad (años)</label>
-				<input type="text" className="form-control" id="formGroupInput" placeholder="" onChange={ageHandler} />
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Peso (cm)</label>
-				<input
-					type="text"
-					className="form-control"
-					id="formGroupInput"
-					placeholder=""
-					onChange={weightHandler}
-				/>
-			</div>
-			<div className="form-group">
-				<label htmlFor="formGroupInput">Altura (cm)</label>
-				<input
-					type="text"
-					className="form-control"
-					id="formGroupInput"
-					placeholder=""
-					onChange={heightHandler}
-				/>
-			</div>
-			<button type="submit" className="btn btn-success" onClick={handlerSubmit}>
+		<div className="container">
+			{error && <Alert variant="danger">Hubo un error</Alert>}
+			<form className="form-format">
+				<h1>Datos de la Mascota</h1>
+				<hr className="style2" />
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Nombre</label>
+					<input type="text" className="form-control" value={name} onChange={nameHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Especie</label>
+					<input type="text" className="form-control" value={species} onChange={speciesHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Raza</label>
+					<input type="text" className="form-control" value={race} onChange={raceHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Sexo</label>
+					<input type="text" className="form-control" value={gender} onChange={genderHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Fecha de Nacimiento</label>
+					<input type="date" className="form-control" value={birthday} onChange={birthdayHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Edad (años)</label>
+					<input type="text" className="form-control" value={age} onChange={ageHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Peso (kg)</label>
+					<input type="text" className="form-control" value={weight} onChange={weightHandler} />
+				</div>
+				<div className="form-group">
+					<label htmlFor="formGroupInput">Altura (cm)</label>
+					<input type="text" className="form-control" value={height} onChange={heightHandler} />
+				</div>
+			</form>
+			<button
+				className="btn btn-success ml-5"
+				onClick={e => petAgregar(name, species, race, gender, birthday, age, weight, height)}>
 				Agregar Mascota
 			</button>
-		</form>
+		</div>
 	);
 }

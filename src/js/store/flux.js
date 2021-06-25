@@ -1,12 +1,14 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	// CAMBIEN ESTA VARIABLE PARA EL BACK SOLO ESTA!!!!!!
-	const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io";
+	/// const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io";
+	const urlAPI = "https://3000-rose-koi-dosv2vcy.ws-us08.gitpod.io";
 	return {
 		store: {
 			token: [],
 			usuario: [],
 			mascotas: [],
-			vacunas: []
+			vacunas: [],
+			URL: urlAPI
 		},
 		actions: {
 			loadSomeData: () => {
@@ -26,11 +28,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			login: async (usuario, contrasena) => {
 				try {
+					console.log(usuario, contrasena);
 					const response = await fetch(`${urlAPI}/log-in`, {
 						method: "POST",
 						headers: {
-							"Content-Type": "application/json",
-							token: store.usuario.token
+							"Content-Type": "application/json"
 						},
 						body: JSON.stringify({
 							email: usuario,

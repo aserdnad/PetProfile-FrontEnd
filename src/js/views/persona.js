@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../styles/home.scss";
 import { Row, Col, Jumbotron, Button, Card, Form } from "react-bootstrap";
 import { Mascota } from "../component/mascota";
+import { Context } from "../store/appContext";
 
 import QRCode from "qrcode.react";
 
 export const Persona = () => {
 	const [prueba, setPrueba] = useState(true);
-
+	const { store, actions } = useContext(Context);
 	const irse = () => {
 		history.push("/editar");
 	};
