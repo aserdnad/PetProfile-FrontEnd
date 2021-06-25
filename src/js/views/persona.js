@@ -6,8 +6,12 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 
 export const Persona = () => {
-	const [prueba, setPrueba] = useState(true);
 	const { store, actions } = useContext(Context);
+	const history = useHistory();
+
+	const formMascota = () => {
+		history.push("/formpet");
+	};
 	const irse = () => {
 		history.push("/editar");
 	};
@@ -36,18 +40,38 @@ export const Persona = () => {
 				</Col>
 			</Row>
 			<h1 className="text-center mt-5">Mascotas</h1>
-			{prueba ? (
-				<Mascota />
+			{store.mascotas.length > 0 ? (
+				<div>
+					{store.mascotas.map((animal, index) => {
+						return (
+							<div key={index}>
+								<Mascota
+									age={animal.age}
+									birthday={animal.birthday}
+									gender={animal.gender}
+									height={animal.height}
+									name={animal.name}
+									race={animal.race}
+									species={animal.species}
+									weight={animal.weight}
+								/>
+							</div>
+						);
+					})}
+				</div>
 			) : (
 				<div className="text-center">
-					<Button variant="primary" className="mt-2">
+					<Button variant="primary" className="mt-2" onClick={formMascota}>
 						Registra tu primera mascota!
 					</Button>
 				</div>
 			)}
-			<button type="button" className="btn btn-primary">
-				Ver historial medico de tus mascotas
-			</button>
+
+			<div className="text-center">
+				<button type="button" className="btn btn-primary mt-5">
+					Ver historial medico de tus mascotas
+				</button>
+			</div>
 		</div>
 	);
 };

@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	// CAMBIEN ESTA VARIABLE PARA EL BACK SOLO ESTA!!!!!!
 	// const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io";
 	// URL Vicky
-	const urlAPI = "https://3000-emerald-raccoon-opjhvjq7.ws-us09.gitpod.io";
+	const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu09.gitpod.io";
 	return {
 		store: {
 			token: [],
@@ -45,6 +45,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ token: data.token });
 						setStore({ usuario: data.user });
 						console.log(data);
+						const tienda = getActions();
+						const store = getStore();
+						tienda.petConseguir(store.usuario.user_name);
 						return true;
 					} else {
 						console.log(data);
