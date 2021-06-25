@@ -55,12 +55,12 @@ const Layout = () => {
 							<Navbar />
 							<HistorialMedico />
 
-						{/* Vicky */}
+							{/* Vicky */}
 						</Route>
 						<Route exact path="/getpetqr">
 							<GetPetQR />
 						</Route>
-						
+
 						<Route>
 							<Navbar />
 							<Error />

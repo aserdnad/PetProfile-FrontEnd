@@ -4,7 +4,16 @@ import { Button, Card, Row, Col } from "react-bootstrap";
 import pets1 from "../../img/pets1.jpg";
 import PropTypes from "prop-types";
 
+//Vicky
+import { useHistory } from "react-router-dom";
+import QRCode from "qrcode.react";
+
 export const Mascota = ({ age, birthday, gender, height, name, race, species, weight }) => {
+	//Vicky
+	const history = useHistory();
+	// URL publica Front-End gitpod mascota
+	const handleClick = () => history.push("/");
+
 	return (
 		<Row className="mt-3">
 			<Col className="d-flex justify-content-center text-center">
@@ -12,13 +21,19 @@ export const Mascota = ({ age, birthday, gender, height, name, race, species, we
 					<Card.Img variant="top" width="100" height="200" src={pets1} />
 					<Card.Body>
 						<Card.Title>{`Nombre: ${name}`}</Card.Title>
-						<Card.Text>{`raza: ${race}`}</Card.Text>
-						<Card.Text>{`especie: ${species}`}</Card.Text>
-						<Card.Text>{`sexo: ${gender}`}</Card.Text>
-						<Card.Text>{`edad: ${age}`}</Card.Text>
-						<Card.Text>{`peso: ${weight}`}</Card.Text>
-						<Card.Text>{`altura: ${height}`}</Card.Text>
-						<Card.Text>{`cumpleanos: ${birthday}`}</Card.Text>
+						<Card.Text>{`Raza: ${race}`}</Card.Text>
+						<Card.Text>{`Especie: ${species}`}</Card.Text>
+						<Card.Text>{`Sexo: ${gender}`}</Card.Text>
+						<Card.Text>{`Edad: ${age}`}</Card.Text>
+						<Card.Text>{`Peso: ${weight}`}</Card.Text>
+						<Card.Text>{`Altura: ${height}`}</Card.Text>
+						<Card.Text>{`Cumpleaños: ${birthday}`}</Card.Text>
+
+						{/* Vicky */}
+						<Card.Text>
+							<QRCode value="/getpetQR/${mascota}" onClick={handleClick} />
+						</Card.Text>
+
 						<Button variant="primary">Edita la informacion!</Button>
 					</Card.Body>
 				</Card>

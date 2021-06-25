@@ -88,7 +88,6 @@ export const Home = () => {
 									<br />
 									<QRCode value="http://localhost:3001" onClick={handleClick} />
 								</p>
-								
 							</div>
 						</Card.Body>
 					</Card>
