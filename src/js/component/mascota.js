@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../styles/home.scss";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import pets1 from "../../img/pets1.jpg";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 
 //Vicky
 import { useHistory } from "react-router-dom";
@@ -11,8 +12,14 @@ import QRCode from "qrcode.react";
 export const Mascota = ({ petID, age, birthday, gender, height, name, race, species, weight }) => {
 	//Vicky
 	const history = useHistory();
+
+	const { store, actions } = useContext(Context);
 	// URL publica Front-End gitpod mascota
 	const handleClick = () => history.push(`/getpetqr/${petID}`);
+
+	const eliminar = () => {
+		actions.eliminarPet(petID);
+	};
 
 	return (
 		<Row className="mt-3">
@@ -38,7 +45,7 @@ export const Mascota = ({ petID, age, birthday, gender, height, name, race, spec
 							<Button variant="primary">Edita la informacion!</Button>
 						</div>
 						<div clasName="mt-2">
-							<Button variant="danger" className="mt-5">
+							<Button variant="danger" className="mt-5" onClick={eliminar}>
 								Eliminar
 							</Button>
 						</div>
