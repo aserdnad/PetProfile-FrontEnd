@@ -201,7 +201,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-			eliminarPet:async()=>{
+			eliminarPet: async () => {
 				const store = getStore();
 				try {
 					let resp = await fetch(`${urlAPI}/pet/${usuario}`);
