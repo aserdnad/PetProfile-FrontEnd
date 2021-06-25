@@ -8,11 +8,11 @@ import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import QRCode from "qrcode.react";
 
-export const Mascota = ({ age, birthday, gender, height, name, race, species, weight, index }) => {
+export const Mascota = ({ petID, age, birthday, gender, height, name, race, species, weight }) => {
 	//Vicky
 	const history = useHistory();
 	// URL publica Front-End gitpod mascota
-	const handleClick = () => history.push("/");
+	const handleClick = () => history.push(`/getpetqr/${petID}`);
 
 	return (
 		<Row className="mt-3">
@@ -31,7 +31,7 @@ export const Mascota = ({ age, birthday, gender, height, name, race, species, we
 
 						{/* Vicky */}
 						<Card.Text>
-							<QRCode value="/getpetQR/${mascota}" onClick={handleClick} />
+							<QRCode value={`/getpetqr/${petID}`} onClick={handleClick} />
 						</Card.Text>
 
 						<div>
@@ -50,6 +50,7 @@ export const Mascota = ({ age, birthday, gender, height, name, race, species, we
 };
 
 Mascota.propTypes = {
+	petID: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
 	age: PropTypes.string,
 	birthday: PropTypes.string,
 	gender: PropTypes.string,
@@ -57,6 +58,5 @@ Mascota.propTypes = {
 	name: PropTypes.string,
 	race: PropTypes.string,
 	species: PropTypes.string,
-	weight: PropTypes.string,
-	index: PropTypes.string
+	weight: PropTypes.string
 };

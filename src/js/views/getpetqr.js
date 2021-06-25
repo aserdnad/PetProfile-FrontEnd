@@ -1,4 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import "../../styles/home.scss";
 import { Row, Col, Jumbotron, Button, Card, Form } from "react-bootstrap";
 import { MascotaQR } from "../component/mascotaqr";
@@ -8,10 +9,14 @@ export const GetPetQR = () => {
 	const [prueba, setPrueba] = useState(true);
 	const { store, actions } = useContext(Context);
 
+	const params = useParams();
+	useEffect(() => {
+		actions.getPublicPet(params.petID);
+	}, [params]);
 	return (
 		<div className="container">
 			<h1 className="text-center mt-5">Mascotas</h1>
-			<MascotaQR />
+			{store.publicPet != null && <MascotaQR />}
 		</div>
 	);
 };

@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../../styles/home.scss";
 import { Button, Card, Row, Col } from "react-bootstrap";
 import pets1 from "../../img/pets1.jpg";
 import PropTypes from "prop-types";
-
+import { Context } from "../store/appContext";
 //Vicky
 import { useHistory } from "react-router-dom";
 import QRCode from "qrcode.react";
 
-export const MascotaQR = ({ age, birthday, gender, height, name, race, species, weight }) => {
+export const MascotaQR = props => {
 	//Vicky
+	const { store, actions } = useContext(Context);
 	const history = useHistory();
 	// URL publica Front-End gitpod mascota
 	const handleClick = () => history.push("/");
@@ -20,19 +21,14 @@ export const MascotaQR = ({ age, birthday, gender, height, name, race, species, 
 				<Card style={{ width: "40rem" }}>
 					<Card.Img variant="top" width="100" height="200" src={pets1} />
 					<Card.Body>
-						<Card.Title>{`Nombre: ${name}`}</Card.Title>
-						<Card.Text>{`Raza: ${race}`}</Card.Text>
-						<Card.Text>{`Especie: ${species}`}</Card.Text>
-						<Card.Text>{`Sexo: ${gender}`}</Card.Text>
-						<Card.Text>{`Edad (años): ${age}`}</Card.Text>
-						<Card.Text>{`Peso (Kg): ${weight}`}</Card.Text>
-						<Card.Text>{`Altura (cm): ${height}`}</Card.Text>
-						<Card.Text>{`Fecha de Nacimiento: ${birthday}`}</Card.Text>
-
-						{/* Vicky */}
-						<Card.Text>
-							<QRCode value="/getpetQR/{mascota}" onClick={handleClick} />
-						</Card.Text>
+						<Card.Title>{`Nombre: ${store.publicPet.name}`}</Card.Title>
+						<Card.Text>{`Raza: ${store.publicPet.race}`}</Card.Text>
+						<Card.Text>{`Especie: ${store.publicPet.species}`}</Card.Text>
+						<Card.Text>{`Sexo: ${store.publicPet.gender}`}</Card.Text>
+						<Card.Text>{`Edad (años): ${store.publicPet.age}`}</Card.Text>
+						<Card.Text>{`Peso (Kg): ${store.publicPet.weight}`}</Card.Text>
+						<Card.Text>{`Altura (cm): ${store.publicPet.height}`}</Card.Text>
+						<Card.Text>{`Fecha de Nacimiento: ${store.publicPet.birthday}`}</Card.Text>
 					</Card.Body>
 				</Card>
 			</Col>
@@ -40,13 +36,4 @@ export const MascotaQR = ({ age, birthday, gender, height, name, race, species, 
 	);
 };
 
-MascotaQR.propTypes = {
-	age: PropTypes.string,
-	birthday: PropTypes.string,
-	gender: PropTypes.string,
-	height: PropTypes.string,
-	name: PropTypes.string,
-	race: PropTypes.string,
-	species: PropTypes.string,
-	weight: PropTypes.string
-};
+MascotaQR.propTypes = {};
