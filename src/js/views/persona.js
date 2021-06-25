@@ -16,6 +16,10 @@ export const Persona = () => {
 		history.push("/editar");
 	};
 
+	const historial = () => {
+		history.push("/historial");
+	};
+
 	return (
 		<div className="container">
 			<h1 className="text-center">Perfil del Usuario</h1>
@@ -68,7 +72,7 @@ export const Persona = () => {
 			)}
 
 			<div className="text-center">
-				<button type="button" className="btn btn-primary mt-5">
+				<button type="button" className="btn btn-primary mt-5" onClick={historial}>
 					Ver historial medico de tus mascotas
 				</button>
 			</div>

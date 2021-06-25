@@ -11,19 +11,19 @@ export function HistorialMedico() {
 	const [petSelected, setPetSelected] = useState({});
 
 	function getPets(e) {
-		userName = store.usuario;
+		const userName = store.usuario;
 
 		setPetSelected(e.target.value);
 
-		try {
-			if (petSelected == {}) {
-				return null;
-			} else {
-				data = fetch(`https://api.cloudinary.com/v1_1/${userName}/${petSelected}>`);
-			}
-		} catch (error) {
-			console.log(error);
-		}
+		// try {
+		// 	if (petSelected == {}) {
+		// 		return null;
+		// 	} else {
+		// 		data = fetch(`https://api.cloudinary.com/v1_1/${userName}/${petSelected}>`);
+		// 	}
+		// } catch (error) {
+		// 	console.log(error);
+		// }
 	}
 
 	return (
@@ -41,7 +41,7 @@ export function HistorialMedico() {
 						store.mascotas.map((mascota, index) => {
 							return (
 								<Dropdown.Item onClick={getPets} key={index}>
-									{mascota}
+									{mascota.name}
 								</Dropdown.Item>
 							);
 						})}

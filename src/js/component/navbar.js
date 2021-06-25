@@ -12,6 +12,9 @@ export const Navbar = () => {
 				<img width="50" height="50" src={logo} />
 			</Link>
 			<div className="ml-auto">
+				<Link to="/historial" className="m-2 text-white">
+					Historia
+				</Link>
 				<Link to="/calendario" className="m-2 text-white">
 					Calendario
 				</Link>
