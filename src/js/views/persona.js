@@ -30,7 +30,7 @@ export const Persona = () => {
 							<Card.Title>Informacion del Dueño</Card.Title>
 							<Card.Text>Usuario: {store.usuario.user_name}</Card.Text>
 							<Card.Text>Nombre: {store.usuario.name}</Card.Text>
-							<Card.Text>Apellido: {store.usuario.apellido}</Card.Text>
+							<Card.Text>Apellido: {store.usuario.last_name}</Card.Text>
 							<Card.Text>Correo Electrónico: {store.usuario.email}</Card.Text>
 							<Card.Text>Teléfono de Contacto: {store.usuario.phone}</Card.Text>
 							<Card.Text>Cumpleaños: {store.usuario.birthday}</Card.Text>

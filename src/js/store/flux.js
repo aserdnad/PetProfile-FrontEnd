@@ -1,8 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	// CAMBIEN ESTA VARIABLE PARA EL BACK SOLO ESTA!!!!!!
-	// const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io";
+	// const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu09.gitpod.io";
 	// URL Vicky
-	const urlAPI = "https://3000-yellow-dormouse-wlo9lhkj.ws-us09.gitpod.io";
+	const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu09.gitpod.io";
 	return {
 		store: {
 			token: [],
@@ -201,13 +201,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
-			eliminarPet:async()=>{
+			conseguirEliminado: async usuario => {
 				const store = getStore();
 				try {
 					let resp = await fetch(`${urlAPI}/pet/${usuario}`);
 					let data = await resp.json();
 					if (resp.ok) {
-						setStore({ mascotas: [...store.mascotas, ...data] });
+						setStore({ mascotas: [...data] });
+					} else {
+						console.log(data);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			eliminarPet: async petID => {
+				try {
+					let resp = await fetch(`${urlAPI}/pet/${petID}`, {
+						method: "DELETE"
+					});
+					let data = await resp.json();
+					if (resp.ok) {
+						const tienda = getActions();
+						const store = getStore();
+						tienda.conseguirEliminado(store.usuario.user_name);
 					} else {
 						console.log(data);
 					}
