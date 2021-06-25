@@ -29,7 +29,7 @@ export function HistorialMedico() {
 	return (
 		<div className="container">
 			<h1>Historial medico de tus mascotas</h1>
-			<h2>Por favor elegir el animal</h2>
+			<h2>Por favor elegir a tu mascota</h2>
 
 			<Dropdown>
 				<Dropdown.Toggle variant="success" id="dropdown-basic">

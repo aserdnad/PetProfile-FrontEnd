@@ -35,7 +35,7 @@ export function MyDropzone(prop) {
 			<div id="uploadbox" {...getRootProps()}>
 				<input {...getInputProps()} />
 				{isDragActive ? (
-					<h1 id="uploadtext">Asi mismo!!!! :) </h1>
+					<h1 id="uploadtext">Asi mismo!!!! </h1>
 				) : (
 					<h1 id="uploadtext">Arrastra tus archivos aqui, o dale click a seleccionar archivos</h1>
 				)}
