@@ -1,36 +1,46 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useContext } from "react";
+import { Form } from "react-bootstrap";
+import context from "react-bootstrap/esm/AccordionContext";
 import { useDropzone } from "react-dropzone";
-import { store } from "../store/appContext";
+import { Context } from "../store/appContext";
 
 export function MyDropzone(prop) {
-	let userName = "store.usuario";
+	const { store, actions } = useContext(Context);
 
-	const onDrop = useCallback(async acceptedFiles => {
-		try {
-			fetch(`https://3000-magenta-penguin-zgcydz94.ws-us08.gitpod.io/history/${userName}/${petName}`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json"
-				},
-				body: {
-					files: acceptedFiles
-				}
-			});
-		} catch (error) {
-			console.log(error);
+	const userName = "";
+
+	const onDrop = useCallback(async () => {
+		for (let file of acceptedFiles) {
+			try {
+				fetch(`https://3000-emerald-sheep-5phsfce8.ws-us08.gitpod.io//history/${userName}/${petName}`, {
+					method: "POST",
+					headers: {
+						"Content-Type": "multipart/form-data"
+					},
+					body: {
+						files: acceptedFiles
+					}
+				});
+			} catch (error) {
+				console.log(error);
+			}
 		}
+
 		// Do something with the files
 	}, []);
-	const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+	const { acceptedFiles, getRootProps, getInputProps, isDragActive } = useDropzone();
 
 	return (
-		<div id="uploadbox" {...getRootProps()}>
-			<input {...getInputProps()} />
-			{isDragActive ? (
-				<h1>Asi mismo!!!! :) </h1>
-			) : (
-				<p>Arrastra tus archivos aqui, o dale click a seleccionar archivos</p>
-			)}
-		</div>
+		<>
+			<div id="uploadbox" {...getRootProps()}>
+				<input {...getInputProps()} />
+				{isDragActive ? (
+					<h1 id="uploadtext">Asi mismo!!!! :) </h1>
+				) : (
+					<h1 id="uploadtext">Arrastra tus archivos aqui, o dale click a seleccionar archivos</h1>
+				)}
+			</div>
+			<buttom onClick={onDrop}>Enviar!</buttom>
+		</>
 	);
 }
