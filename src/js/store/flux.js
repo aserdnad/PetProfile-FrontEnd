@@ -1,7 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	// CAMBIEN ESTA VARIABLE PARA EL BACK SOLO ESTA!!!!!!
 	/// const urlAPI = "https://3000-brown-sailfish-2on2xns7.ws-eu08.gitpod.io";
-	const urlAPI = "https://3000-rose-koi-dosv2vcy.ws-us08.gitpod.io";
+	const urlAPI = "https://3000-yellow-dormouse-wlo9lhkj.ws-us08.gitpod.io";
 	return {
 		store: {
 			token: [],

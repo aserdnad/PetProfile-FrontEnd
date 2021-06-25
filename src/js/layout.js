@@ -15,6 +15,9 @@ import { Calendario } from "./views/calendario";
 import { EditarPerfil } from "./views/editarperfil";
 import { HistorialMedico } from "./views/HistorialMedico";
 
+//Vicky
+import { GetPetQR } from "./views/getpetqr";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -51,7 +54,13 @@ const Layout = () => {
 						<Route exact path="/historial">
 							<Navbar />
 							<HistorialMedico />
+
+						{/* Vicky */}
 						</Route>
+						<Route exact path="/getpetqr">
+							<GetPetQR />
+						</Route>
+						
 						<Route>
 							<Navbar />
 							<Error />

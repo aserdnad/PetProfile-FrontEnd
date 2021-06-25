@@ -12,7 +12,10 @@ export const Home = () => {
 	const [error, setError] = useState(false);
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	const handleClick = () => history.push("/xyz");
+
+	//Vicky
+	// URL publica Front-End gitpod
+	const handleClick = () => history.push("/");
 
 	const login = async () => {
 		const resultado = await actions.login(usuario, contrasena);
@@ -78,11 +81,14 @@ export const Home = () => {
 									¡Regístrate!
 								</button>
 							</div>
+
+							{/* Vicky */}
 							<div className="row d-flex justify-content-center">
 								<p>
 									<br />
 									<QRCode value="http://localhost:3001" onClick={handleClick} />
 								</p>
+								
 							</div>
 						</Card.Body>
 					</Card>
