@@ -19,11 +19,11 @@ export function MyDropzone() {
 				<>
 					<img
 						id="fotos"
-						src={require("C:/Users/Euclides/Google Drive/Desarrollo de software/Proyecto Final/PetProfile-FrontEnd/src/img/historialmedico1.png")} // Se debe poenr ruta relativa
+						src={require("../../img/historialmedico1.png")} // Se debe poenr ruta relativa
 					/>
 					<img
 						id="fotos"
-						src={require("C:/Users/Euclides/Google Drive/Desarrollo de software/Proyecto Final/PetProfile-FrontEnd/src/img/historialmedico2.png")} // Se debe poenr ruta relativa
+						src={require("../../img/historialmedico2.png")} // Se debe poenr ruta relativa
 					/>
 				</>
 			);
