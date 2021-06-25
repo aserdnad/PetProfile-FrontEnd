@@ -29,7 +29,7 @@ export const Mascota = ({ petID, age, birthday, gender, height, name, race, spec
 		<Row className="mt-3">
 			<Col className="d-flex justify-content-center text-center">
 				<Card style={{ width: "40rem" }}>
-					<Card.Img variant="top" width="100" height="200" src={pets1} />
+					<Card.Img variant="top" width="auto" height="450" src={pets1} />
 					<Card.Body>
 						<Card.Title>{`Nombre: ${name}`}</Card.Title>
 						<Card.Text>{`Raza: ${race}`}</Card.Text>

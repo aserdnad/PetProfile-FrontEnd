@@ -8,7 +8,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: [],
 			usuario: [],
 			mascotas: [],
-			vacunas: [],
+			vacunas: [
+				{ title: "vacuna rabia", date: "2021-06-10" },
+				{ title: "vacuna hepatitis", date: "2021-06-30" },
+				{ title: "veterinario", date: "2021-07-10" },
+				{ title: "hotel viaje", date: "2021-07-24" }
+			],
 			URL: urlAPI,
 			publicPet: null
 		},
