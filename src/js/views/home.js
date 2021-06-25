@@ -50,7 +50,7 @@ export const Home = () => {
 							<form>
 								<div className="mb-3">
 									<label>
-										<strong>Nombre de usuario</strong>
+										<strong>Correo Electrónico</strong>
 									</label>
 									<input
 										type="text"
@@ -86,7 +86,7 @@ export const Home = () => {
 							<div className="row d-flex justify-content-center">
 								<p>
 									<br />
-									<QRCode value="http://localhost:3001" onClick={handleClick} />
+									<QRCode value="http://www.petprofile.com" onClick={handleClick} />
 								</p>
 							</div>
 						</Card.Body>
