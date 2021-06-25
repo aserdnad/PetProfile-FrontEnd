@@ -57,7 +57,7 @@ const Layout = () => {
 
 							{/* Vicky */}
 						</Route>
-						<Route exact path="/getpetqr">
+						<Route exact path="/getpetqr/:petID">
 							<GetPetQR />
 						</Route>
 

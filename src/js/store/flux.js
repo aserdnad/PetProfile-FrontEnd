@@ -9,7 +9,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			usuario: [],
 			mascotas: [],
 			vacunas: [],
-			URL: urlAPI
+			URL: urlAPI,
+			publicPet: null
 		},
 		actions: {
 			loadSomeData: () => {
@@ -192,6 +193,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(data);
 						console.log(response.ok);
 						console.log(response.status);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
+			getPublicPet: async petID => {
+				try {
+					const response = await fetch(`${urlAPI}/pet/${petID}`);
+					const pet = await response.json();
+					if (response.ok) {
+						setStore({
+							publicPet: pet
+						});
+					} else {
+						throw new Error(pet);
 					}
 				} catch (error) {
 					console.log(error);
