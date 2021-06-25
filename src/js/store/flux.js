@@ -232,6 +232,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(error);
 				}
 			},
+			cambiarPet: async (age, weight, height, petID) => {
+				try {
+					let resp = await fetch(`${urlAPI}/pet/${petID}`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							age: age,
+							weight: weight,
+							height: height
+						})
+					});
+					const data = await resp.json();
+					if (resp.ok) {
+						const tienda = getActions();
+						const store = getStore();
+						tienda.conseguirEliminado(store.usuario.user_name);
+						return true;
+					} else {
+						console.log(data);
+					}
+				} catch (error) {
+					console.log(error);
+				}
+			},
 			getPublicPet: async petID => {
 				try {
 					const response = await fetch(`${urlAPI}/pet/${petID}`);

@@ -13,6 +13,7 @@ import { Error } from "./views/error";
 import { Persona } from "./views/persona";
 import { Calendario } from "./views/calendario";
 import { EditarPerfil } from "./views/editarperfil";
+import { EditarMascota } from "./views/editarmascota";
 import { HistorialMedico } from "./views/HistorialMedico";
 
 //Vicky
@@ -50,6 +51,10 @@ const Layout = () => {
 						<Route exact path="/editar">
 							<Navbar />
 							<EditarPerfil />
+						</Route>
+						<Route exact path="/editarmascota/:id">
+							<Navbar />
+							<EditarMascota />
 						</Route>
 						<Route exact path="/historial">
 							<Navbar />

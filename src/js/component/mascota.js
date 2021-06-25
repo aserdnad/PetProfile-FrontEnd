@@ -9,7 +9,7 @@ import { Context } from "../store/appContext";
 import { useHistory } from "react-router-dom";
 import QRCode from "qrcode.react";
 
-export const Mascota = ({ petID, age, birthday, gender, height, name, race, species, weight }) => {
+export const Mascota = ({ petID, age, birthday, gender, height, name, race, species, weight, index }) => {
 	//Vicky
 	const history = useHistory();
 
@@ -19,6 +19,10 @@ export const Mascota = ({ petID, age, birthday, gender, height, name, race, spec
 
 	const eliminar = () => {
 		actions.eliminarPet(petID);
+	};
+
+	const editarMascota = index => {
+		history.push(`/editarmascota/${index}`);
 	};
 
 	return (
@@ -42,9 +46,11 @@ export const Mascota = ({ petID, age, birthday, gender, height, name, race, spec
 						</Card.Text>
 
 						<div>
-							<Button variant="primary">Edita la informacion!</Button>
+							<Button variant="primary" onClick={() => editarMascota(index)}>
+								Edita la informacion!
+							</Button>
 						</div>
-						<div clasName="mt-2">
+						<div className="mt-2">
 							<Button variant="danger" className="mt-5" onClick={eliminar}>
 								Eliminar
 							</Button>
@@ -65,5 +71,6 @@ Mascota.propTypes = {
 	name: PropTypes.string,
 	race: PropTypes.string,
 	species: PropTypes.string,
-	weight: PropTypes.string
+	weight: PropTypes.string,
+	index: PropTypes.oneOf([PropTypes.string, PropTypes.number])
 };

@@ -50,7 +50,7 @@ export const Home = () => {
 							<form>
 								<div className="mb-3">
 									<label>
-										<strong>Nombre de usuario</strong>
+										<strong>Correo electronico</strong>
 									</label>
 									<input
 										type="text"

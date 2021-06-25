@@ -17,6 +17,9 @@ export const GetPetQR = () => {
 		<div className="container">
 			<h1 className="text-center mt-5">Mascotas</h1>
 			{store.publicPet != null && <MascotaQR />}
+			<div className="text-center">
+				<Button variant="primary">Adopta!</Button>
+			</div>
 		</div>
 	);
 };
