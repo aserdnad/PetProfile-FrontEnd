@@ -31,7 +31,7 @@ export const Mascota = ({ age, birthday, gender, height, name, race, species, we
 
 						{/* Vicky */}
 						<Card.Text>
-							<QRCode value="/getpetQR/${mascota}" onClick={handleClick} />
+							<QRCode value="/getpetqr/" onClick={handleClick} />
 						</Card.Text>
 
 						<Button variant="primary">Edita la informacion!</Button>
