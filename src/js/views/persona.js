@@ -50,6 +50,7 @@ export const Persona = () => {
 						return (
 							<div key={index}>
 								<Mascota
+									petID={animal.id}
 									age={animal.age}
 									birthday={animal.birthday}
 									gender={animal.gender}
