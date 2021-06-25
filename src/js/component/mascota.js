@@ -8,7 +8,7 @@ import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import QRCode from "qrcode.react";
 
-export const Mascota = ({ age, birthday, gender, height, name, race, species, weight }) => {
+export const Mascota = ({ age, birthday, gender, height, name, race, species, weight, index }) => {
 	//Vicky
 	const history = useHistory();
 	// URL publica Front-End gitpod mascota
@@ -34,7 +34,14 @@ export const Mascota = ({ age, birthday, gender, height, name, race, species, we
 							<QRCode value="/getpetQR/${mascota}" onClick={handleClick} />
 						</Card.Text>
 
-						<Button variant="primary">Edita la informacion!</Button>
+						<div>
+							<Button variant="primary">Edita la informacion!</Button>
+						</div>
+						<div clasName="mt-2">
+							<Button variant="danger" className="mt-5">
+								Eliminar
+							</Button>
+						</div>
 					</Card.Body>
 				</Card>
 			</Col>
@@ -50,5 +57,6 @@ Mascota.propTypes = {
 	name: PropTypes.string,
 	race: PropTypes.string,
 	species: PropTypes.string,
-	weight: PropTypes.string
+	weight: PropTypes.string,
+	index: PropTypes.string
 };

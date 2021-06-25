@@ -58,6 +58,7 @@ export const Persona = () => {
 									race={animal.race}
 									species={animal.species}
 									weight={animal.weight}
+									index={index}
 								/>
 							</div>
 						);
