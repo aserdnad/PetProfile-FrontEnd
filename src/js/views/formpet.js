@@ -3,8 +3,6 @@ import { useHistory } from "react-router-dom";
 import { Alert } from "react-bootstrap";
 import { Context } from "../store/appContext";
 
-
-
 export function FormPet() {
 	const history = useHistory();
 
